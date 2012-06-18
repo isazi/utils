@@ -33,7 +33,7 @@ namespace utils {
 
 // Convert value into a string
 template< typename T > string *toString(T value);
-inline template< typename T > string toStringValue(T value);
+template< typename T > inline string toStringValue(T value);
 
 // Replace the occurrences of placeholder in src with value
 string *replace(string *src, string placeholder, string value, bool deleteSrc = false);
@@ -56,7 +56,7 @@ template< typename T > string *toString(T value) {
 }
 
 
-inline template< typename T > string toStringValue(T value) {
+template< typename T > inline string toStringValue(T value) {
 	return castToType< T, string >(value);
 }
 
