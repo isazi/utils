@@ -47,6 +47,9 @@ inline bool same(const float result, const float expected);
 // Divide x by 10^9
 inline double giga(long long unsigned int x);
 
+// Divide x by 2^20
+inline double mebi(long long unsigned int x);
+
 
 // Implementations
 
@@ -79,6 +82,11 @@ inline bool same(const float result, const float expected) {
 
 inline double giga(long long unsigned int x) {
 	return x / 1000000000.0;
+}
+
+
+inline double mebi(long long unsigned int x) {
+	return x / 1048576.0;
 }
 
 } // utils
