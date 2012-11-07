@@ -93,15 +93,6 @@ inline double mebi(long long unsigned int x) {
 	return x / 1048576.0;
 }
 
-void changeEndianness(char *value) {
-	unsigned int bitMap = *(reinterpret_cast< unsigned int * >(value));
-
-	bitMap = ((bitMap >> 8) & 0x00ff00ff) | ((bitMap << 8) & 0xff00ff00);
-	bitMap = ((bitMap >> 16) & 0x0000ffff) | ((bitMap << 16) & 0xffff0000);
-
-	*value = bitMap;
-}
-
 } // utils
 } // isa
 
