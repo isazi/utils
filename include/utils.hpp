@@ -36,7 +36,7 @@ template< typename T > string *toString(T value);
 template< typename T > inline string toStringValue(T value);
 
 // Replace the occurrences of placeholder in src with value
-string *replace(string *src, string placeholder, string value, bool deleteSrc = false);
+string *replace(string *src, string placeholder, string &value, bool deleteSrc = false);
 
 // Casts value from N to T
 template< typename N, typename T > T castToType(N value);

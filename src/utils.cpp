@@ -23,7 +23,7 @@ namespace isa {
 
 namespace utils {
 
-string *replace(string *src, string placeholder, string value, bool deleteSrc) {
+string *replace(string *src, string placeholder, string &value, bool deleteSrc) {
 	string *toRet = new string();
 	size_t pos = 0;
 	size_t oldPos = 0;
