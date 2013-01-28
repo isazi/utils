@@ -58,7 +58,7 @@ void Timer::start() {
 }
 
 void Timer::stop() {
-	time = (starting - static_cast< double >(clock())) / CLOCKS_PER_SEC;
+	time = (static_cast< double >(clock()) - starting) / CLOCKS_PER_SEC;
 	totalTime += time;
 	nrRuns++;
 	starting = 0;
