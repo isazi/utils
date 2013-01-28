@@ -67,7 +67,7 @@ inline double Timer::getLastRunTime() const {
 	return time;
 }
 
-inline double Timer::getAverage() const {
+inline double Timer::getAverageTime() const {
 	return average;
 }
 

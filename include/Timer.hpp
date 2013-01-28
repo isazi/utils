@@ -35,7 +35,7 @@ public:
 
 	inline double getTotalTime() const;
 	inline double getLastRunTime() const;
-	inline double getAverage() const;
+	inline double getAverageTime() const;
 	inline double getStdDev() const;
 
 private:
