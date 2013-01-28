@@ -24,6 +24,8 @@
 using std::sqrt;
 using std::clock;
 
+namespace isa {
+namespace utils {
 
 Timer::Timer() : starting(0), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
 
@@ -74,4 +76,7 @@ inline double Timer::getAverageTime() const {
 inline double Timer::getStdDev() const {
 	return sqrt(variance / nrRuns);
 }
+
+} // utils
+} // isa
 
