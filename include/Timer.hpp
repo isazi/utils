@@ -47,6 +47,59 @@ private:
 	double variance;
 };
 
+
+// Implementations
+
+Timer::Timer() : starting(0), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
+
+void Timer::start() {
+	starting = clock();
+}
+
+void Timer::stop() {
+	time = (starting - static_cast< double >(clock())) / CLOCKS_PER_SEC;
+	totalTime += time;
+	nrRuns++;
+	starting = 0;
+	
+	if ( nrRuns == 1 ) {
+		average = time;
+		variance = 0.0;
+	}
+	else {
+		double oldAverage = average;
+		double oldVariance = variance;
+
+		average = oldAverage + ((time - oldAverage) / nrRuns);
+		variance = oldVariance + ((time - oldAverage) * (time - average));
+	}
+}
+
+void Timer::reset() {
+	starting = 0;
+	nrRuns = 0;
+	totalTime = 0.0;
+	time = 0.0;
+	average = 0.0;
+	variance = 0.0;
+}
+
+inline double Timer::getTotalTime() const {
+	return totalTime;
+}
+
+inline double Timer::getLastRunTime() const {
+	return time;
+}
+
+inline double Timer::getAverageTime() const {
+	return average;
+}
+
+inline double Timer::getStdDev() const {
+	return sqrt(variance / nrRuns);
+}
+
 } // utils
 } // isa
 
