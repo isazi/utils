@@ -18,6 +18,7 @@
  */
 
 #include <ctime>
+#include <cmath>
 
 #ifndef TIMER_HPP
 #define TIMER_HPP
