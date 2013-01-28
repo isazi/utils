@@ -44,7 +44,7 @@ private:
 	double totalTime;
 	double time;
 	double average;
-	double stdDev;
+	double variance;
 };
 
 } // utils
