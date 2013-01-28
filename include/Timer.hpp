@@ -39,7 +39,7 @@ public:
 	inline double getStdDev() const;
 
 private:
-	clock_t start;
+	clock_t starting;
 	unsigned int nrRuns;
 	double totalTime;
 	double time;

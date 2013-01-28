@@ -25,17 +25,17 @@ using std::sqrt;
 using std::clock;
 
 
-Timer::Timer() : start(0), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
+Timer::Timer() : starting(0), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
 
 void Timer::start() {
-	start = clock();
+	starting = clock();
 }
 
 void Timer::stop() {
-	time = (start - static_cast< double >(clock())) / CLOCKS_PER_SEC;
+	time = (starting - static_cast< double >(clock())) / CLOCKS_PER_SEC;
 	totalTime += time;
 	nrRuns++;
-	start = 0;
+	starting = 0;
 	
 	if ( nrRuns == 1 ) {
 		average = time;
@@ -51,7 +51,7 @@ void Timer::stop() {
 }
 
 void Timer::reset() {
-	start = 0;
+	starting = 0;
 	nrRuns = 0;
 	totalTime = 0.0;
 	time = 0.0;
