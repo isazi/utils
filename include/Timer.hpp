@@ -24,8 +24,7 @@
 using std::string;
 using std::chrono::duration_cast;
 using std::chrono::duration;
-using std::chrono::high_resolution_clock::time_point;
-using std::chrono::high_resolution_time::now;
+using std::chrono::high_resolution_clock;
 
 #ifndef TIMER_HPP
 #define TIMER_HPP
@@ -35,41 +34,40 @@ namespace utils {
 
 class Timer {
 public:
-								Timer(string name);
+		Timer(string name);
 
-			void 				start();
-			void 				stop();
-			void 				reset();
+	void start();
+	void stop();
+	void reset();
 
-	inline 	double 				getTotalTime() const;
-	inline 	double 				getLastRunTime() const;
-	inline 	double 				getAverageTime() const;
-	inline 	double 				getStdDev() const;
+	inline double getTotalTime() const;
+	inline double getLastRunTime() const;
+	inline double getAverageTime() const;
+	inline double getStdDev() const;
 
 private:
-			string				name;
-			time_point 			starting;
-			unsigned int 		nrRuns;
-			double 				totalTime;
-			double 				time;
-			double 				average;
-			double 				variance;
+	string name;
+	high_resolution_clock::time_point starting;
+	unsigned int nrRuns;
+	double totalTime;
+	double time;
+	double average;
+	double variance;
 };
 
 
 // Implementation
 
-Timer::Timer(string name) : name(name), starting(time_point()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
+Timer::Timer(string name) : name(name), starting(high_resolution_clock::time_point()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
 
 void Timer::start() {
-	starting = now();
+	starting = high_resolution_clock::now();
 }
 
 void Timer::stop() {
-	time = (duration_cast< duration< double > >(now() - starting)).count();
+	time = (duration_cast< duration< double > >(high_resolution_clock::now() - starting)).count();
 	totalTime += time;
 	nrRuns++;
-	starting = 0;
 	
 	if ( nrRuns == 1 ) {
 		average = time;
@@ -83,7 +81,7 @@ void Timer::stop() {
 }
 
 void Timer::reset() {
-	starting = 0;
+	starting = high_resolution_clock::time_point();
 	nrRuns = 0;
 	totalTime = 0.0;
 	time = 0.0;
