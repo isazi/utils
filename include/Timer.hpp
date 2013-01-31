@@ -19,6 +19,13 @@
 
 #include <ctime>
 #include <cmath>
+#include <string>
+#include <chrono>
+using std::string;
+using std::chrono::duration_cast;
+using std::chrono::duration;
+using std::chrono::high_resolution_clock::time_point;
+using std::chrono::high_resolution_time::now;
 
 #ifndef TIMER_HPP
 #define TIMER_HPP
@@ -28,37 +35,38 @@ namespace utils {
 
 class Timer {
 public:
-	Timer();
+								Timer(string name);
 
-	void start();
-	void stop();
-	void reset();
+			void 				start();
+			void 				stop();
+			void 				reset();
 
-	inline double getTotalTime() const;
-	inline double getLastRunTime() const;
-	inline double getAverageTime() const;
-	inline double getStdDev() const;
+	inline 	double 				getTotalTime() const;
+	inline 	double 				getLastRunTime() const;
+	inline 	double 				getAverageTime() const;
+	inline 	double 				getStdDev() const;
 
 private:
-	clock_t starting;
-	unsigned int nrRuns;
-	double totalTime;
-	double time;
-	double average;
-	double variance;
+			string				name;
+			time_point 			starting;
+			unsigned int 		nrRuns;
+			double 				totalTime;
+			double 				time;
+			double 				average;
+			double 				variance;
 };
 
 
-// Implementations
+// Implementation
 
-Timer::Timer() : starting(0), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
+Timer::Timer(string name) : name(name), starting(time_point()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
 
 void Timer::start() {
-	starting = clock();
+	starting = now();
 }
 
 void Timer::stop() {
-	time = (static_cast< double >(clock()) - starting) / CLOCKS_PER_SEC;
+	time = (duration_cast< duration< double > >(now() - starting)).count();
 	totalTime += time;
 	nrRuns++;
 	starting = 0;
@@ -66,13 +74,11 @@ void Timer::stop() {
 	if ( nrRuns == 1 ) {
 		average = time;
 		variance = 0.0;
-	}
-	else {
+	} else {
 		double oldAverage = average;
-		double oldVariance = variance;
 
 		average = oldAverage + ((time - oldAverage) / nrRuns);
-		variance = oldVariance + ((time - oldAverage) * (time - average));
+		variance += ((time - oldAverage) * (time - average));
 	}
 }
 
