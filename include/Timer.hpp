@@ -49,7 +49,7 @@ public:
 
 private:
 	string name;
-	time_point starting;
+	high_resolution_clock::time_point starting;
 	unsigned int nrRuns;
 	double totalTime;
 	double time;
