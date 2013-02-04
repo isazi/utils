@@ -20,7 +20,13 @@
 #include <ctime>
 #include <cmath>
 #include <string>
+#include <chrono>
 using std::string;
+using std::chrono::duration_cast;
+using std::chrono::duration;
+using std::chrono::high_resolution_clock::time_point;
+using std::chrono::high_resolution_time::now;
+
 
 #ifndef TIMER_HPP
 #define TIMER_HPP
@@ -31,7 +37,7 @@ namespace utils {
 
 class Timer {
 public:
-		Timer(string name);
+	Timer(string name);
 
 	void start();
 	void stop();
@@ -44,8 +50,7 @@ public:
 
 private:
 	string name;
-	struct timespec starting;
-	struct timespec resolution;
+	time_point starting;
 	unsigned int nrRuns;
 	double totalTime;
 	double time;
@@ -56,22 +61,17 @@ private:
 
 // Implementation
 
-Timer::Timer(string name) : name(name), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {
-	clock_gettime(CLOCK_MONOTONIC, &starting);
-	clock_getres(CLOCK_MONOTONIC, &resolution);
-}
+Timer::Timer(string name) : name(name), starting(time_point()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
 
 void Timer::start() {
-	clock_gettime(CLOCK_MONOTONIC, &starting);
+	starting = now();
 }
 
 void Timer::stop() {
-	struct timespec ending;
-
-	clock_gettime(CLOCK_MONOTONIC, &ending);
-	time = static_cast< double >(ending.tv_nsec - starting.tv_nsec) / resolution.tv_nsec;
+	time = (duration_cast< duration< double > >(now() - starting)).count();
 	totalTime += time;
 	nrRuns++;
+	starting = 0;
 	
 	if ( nrRuns == 1 ) {
 		average = time;
@@ -85,7 +85,7 @@ void Timer::stop() {
 }
 
 void Timer::reset() {
-	clock_gettime(CLOCK_MONOTONIC, &starting);
+	starting = 0;
 	nrRuns = 0;
 	totalTime = 0.0;
 	time = 0.0;
