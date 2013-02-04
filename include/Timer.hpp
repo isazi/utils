@@ -25,7 +25,6 @@ using std::string;
 using std::chrono::duration_cast;
 using std::chrono::duration;
 using std::chrono::high_resolution_clock;
-using std::chrono::high_resolution_time;
 
 
 #ifndef TIMER_HPP
@@ -61,7 +60,7 @@ private:
 
 // Implementation
 
-Timer::Timer(string name) : name(name), starting(high_resolution_time::time_point()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
+Timer::Timer(string name) : name(name), starting(high_resolution_clock::time_point()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
 
 void Timer::start() {
 	starting = high_resolution_clock::now();
@@ -71,7 +70,6 @@ void Timer::stop() {
 	time = (duration_cast< duration< double > >(high_resolution_clock::now() - starting)).count();
 	totalTime += time;
 	nrRuns++;
-	starting = high_resolution_time::time_point();
 	
 	if ( nrRuns == 1 ) {
 		average = time;
@@ -85,7 +83,7 @@ void Timer::stop() {
 }
 
 void Timer::reset() {
-	starting = high_resolution_time::time_point();
+	starting = high_resolution_clock::time_point();
 	nrRuns = 0;
 	totalTime = 0.0;
 	time = 0.0;
