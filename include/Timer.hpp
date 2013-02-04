@@ -20,14 +20,11 @@
 #include <ctime>
 #include <cmath>
 #include <string>
-#include <chrono>
 using std::string;
-using std::chrono::duration_cast;
-using std::chrono::duration;
-using std::chrono::high_resolution_clock;
 
 #ifndef TIMER_HPP
 #define TIMER_HPP
+
 
 namespace isa {
 namespace utils {
@@ -47,7 +44,8 @@ public:
 
 private:
 	string name;
-	high_resolution_clock::time_point starting;
+	struct timespec starting;
+	struct timespec resolution;
 	unsigned int nrRuns;
 	double totalTime;
 	double time;
@@ -58,14 +56,19 @@ private:
 
 // Implementation
 
-Timer::Timer(string name) : name(name), starting(high_resolution_clock::time_point()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
+Timer::Timer(string name) : name(name), starting(struct timespec()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {
+	clock_getres(CLOCK_MONOTONIC, &resolution);
+}
 
 void Timer::start() {
-	starting = high_resolution_clock::now();
+	clock_gettime(CLOCK_MONOTONIC, &starting);
 }
 
 void Timer::stop() {
-	time = (duration_cast< duration< double > >(high_resolution_clock::now() - starting)).count();
+	struct timespec ending;
+
+	clock_gettime(CLOCK_MONOTONIC, &ending);
+	time = static_cast< double >(ending.tv_nsec - starting.tv_nsec) / resolution.tv_nsec;
 	totalTime += time;
 	nrRuns++;
 	
@@ -81,7 +84,7 @@ void Timer::stop() {
 }
 
 void Timer::reset() {
-	starting = high_resolution_clock::time_point();
+	starting = struct timespec();
 	nrRuns = 0;
 	totalTime = 0.0;
 	time = 0.0;
