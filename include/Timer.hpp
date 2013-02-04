@@ -56,7 +56,8 @@ private:
 
 // Implementation
 
-Timer::Timer(string name) : name(name), starting(struct timespec()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {
+Timer::Timer(string name) : name(name), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {
+	clock_gettime(CLOCK_MONOTONIC, &starting);
 	clock_getres(CLOCK_MONOTONIC, &resolution);
 }
 
@@ -84,7 +85,7 @@ void Timer::stop() {
 }
 
 void Timer::reset() {
-	starting = struct timespec();
+	clock_gettime(CLOCK_MONOTONIC, &starting);
 	nrRuns = 0;
 	totalTime = 0.0;
 	time = 0.0;
