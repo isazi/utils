@@ -1,21 +1,20 @@
-/*
- * Copyright (C) 2010
- * Alessio Sclocco <alessio@sclocco.eu>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
+//
+// Copyright (C) 2010
+// Alessio Sclocco <alessio@sclocco.eu>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 
 #include <string>
 using std::string;
@@ -46,7 +45,10 @@ inline bool same(const float result, const float expected);
 
 // Divide x by 10^9
 inline double giga(long long unsigned int x);
-
+// Divide x by 10^6
+inline double mega(long long unsigned int x);
+// Divide x by 2^30
+inline double gibi(long long unsigned int x);
 // Divide x by 2^20
 inline double mebi(long long unsigned int x);
 
@@ -54,6 +56,8 @@ inline double mebi(long long unsigned int x);
 // See http://stackoverflow.com/questions/2782725/converting-float-values-from-big-endian-to-little-endian
 void changeEndianness(char *value);
 
+// Pad x to be a multiple of padding
+inline long long unsigned int pad(long long unsigned int x, unsigned int padding);
 
 // Implementations
 
@@ -62,11 +66,9 @@ template< typename T > string *toString(T value) {
 	return new string(temp);
 }
 
-
 template< typename T > inline string toStringValue(T value) {
 	return castToType< T, string >(value);
 }
-
 
 template< typename N, typename T > T castToType(N value) {
 	T toRet;
@@ -78,19 +80,32 @@ template< typename N, typename T > T castToType(N value) {
 	return toRet;
 }
 
-
 inline bool same(const float result, const float expected) {
 	return abs(result - expected) < 1e-6;
 }
-
 
 inline double giga(long long unsigned int x) {
 	return x / 1000000000.0;
 }
 
+inline double mega(long long unsigned int x) {
+	return x / 1000000.0;
+}
+
+inline double gibi(long long unsigned int x) {
+	return x / 1073741824.0;
+}
 
 inline double mebi(long long unsigned int x) {
 	return x / 1048576.0;
+}
+
+inline long long unsigned int pad(long long unsigned int x, unsigned int padding) {
+	if ( (x % padding) == 0 ) {
+		return x;
+	} else {
+		return x + (padding - (x % padding));
+	}
 }
 
 } // utils
