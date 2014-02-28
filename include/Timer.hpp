@@ -1,27 +1,26 @@
-/*
- * Copyright (C) 2013
- * Alessio Sclocco <a.sclocco@vu.nl>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
+//
+// Copyright (C) 2013
+// Alessio Sclocco <a.sclocco@vu.nl>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
 
 #include <ctime>
 #include <cmath>
 #include <string>
-#include <chrono>
 using std::string;
+#include <chrono>
 using std::chrono::duration_cast;
 using std::chrono::duration;
 using std::chrono::high_resolution_clock;
@@ -29,7 +28,6 @@ using std::chrono::high_resolution_clock;
 
 #ifndef TIMER_HPP
 #define TIMER_HPP
-
 
 namespace isa {
 namespace utils {
@@ -42,6 +40,7 @@ public:
 	void stop();
 	void reset();
 
+	inline unsigned int getNrRuns() const;
 	inline double getTotalTime() const;
 	inline double getLastRunTime() const;
 	inline double getAverageTime() const;
@@ -89,6 +88,10 @@ void Timer::reset() {
 	time = 0.0;
 	average = 0.0;
 	variance = 0.0;
+}
+
+inline unsigned int Timer::getNrRuns() const {
+	return nrRuns;
 }
 
 inline double Timer::getTotalTime() const {
