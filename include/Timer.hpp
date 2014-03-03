@@ -17,13 +17,14 @@
 //
 
 #include <ctime>
-#include <cmath>
 #include <string>
 using std::string;
 #include <chrono>
 using std::chrono::duration_cast;
 using std::chrono::duration;
 using std::chrono::high_resolution_clock;
+
+#include <Stats.hpp>
 
 
 #ifndef TIMER_HPP
@@ -47,19 +48,17 @@ public:
 	inline double getStdDev() const;
 
 private:
+	Stats< double > stats;
 	string name;
 	high_resolution_clock::time_point starting;
-	unsigned int nrRuns;
 	double totalTime;
 	double time;
-	double average;
-	double variance;
 };
 
 
 // Implementation
 
-Timer::Timer(string name) : name(name), starting(high_resolution_clock::time_point()), nrRuns(0), totalTime(0.0), time(0.0), average(0.0), variance(0.0) {}
+Timer::Timer(string name) : stats(Stats< double >()) name(name), starting(high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
 
 void Timer::start() {
 	starting = high_resolution_clock::now();
@@ -68,30 +67,17 @@ void Timer::start() {
 void Timer::stop() {
 	time = (duration_cast< duration< double > >(high_resolution_clock::now() - starting)).count();
 	totalTime += time;
-	nrRuns++;
-	
-	if ( nrRuns == 1 ) {
-		average = time;
-		variance = 0.0;
-	} else {
-		double oldAverage = average;
-
-		average = oldAverage + ((time - oldAverage) / nrRuns);
-		variance += ((time - oldAverage) * (time - average));
-	}
+	stats.addElement(time);	
 }
 
 void Timer::reset() {
 	starting = high_resolution_clock::time_point();
-	nrRuns = 0;
 	totalTime = 0.0;
 	time = 0.0;
-	average = 0.0;
-	variance = 0.0;
 }
 
 inline unsigned int Timer::getNrRuns() const {
-	return nrRuns;
+	return stats.getNrElements();
 }
 
 inline double Timer::getTotalTime() const {
@@ -103,11 +89,11 @@ inline double Timer::getLastRunTime() const {
 }
 
 inline double Timer::getAverageTime() const {
-	return average;
+	return stats.getAverage();
 }
 
 inline double Timer::getStdDev() const {
-	return sqrt(variance / nrRuns);
+	return stats.getStdDev();
 }
 
 } // utils
