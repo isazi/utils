@@ -58,7 +58,7 @@ private:
 
 // Implementation
 
-Timer::Timer(string name) : stats(Stats< double >()) name(name), starting(high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
+Timer::Timer(string name) : stats(Stats< double >()), name(name), starting(high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
 
 void Timer::start() {
 	starting = high_resolution_clock::now();
