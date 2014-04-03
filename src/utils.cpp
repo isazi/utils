@@ -38,7 +38,7 @@ string *replace(string *src, string placeholder, string &value, bool deleteSrc) 
 	return toRet;
 }
 
-void changeEndianness(char *value) {
+void bigEndianToLittleEndian(char *value) {
 	unsigned int bitMap = *(reinterpret_cast< unsigned int * >(value));
 
 	bitMap = ((bitMap >> 8) & 0x00ff00ff) | ((bitMap << 8) & 0xff00ff00);

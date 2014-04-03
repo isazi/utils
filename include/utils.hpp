@@ -50,7 +50,7 @@ inline double mebi(long long unsigned int x);
 
 // Modify the endianness of a 32 bits number
 // See http://stackoverflow.com/questions/2782725/converting-float-values-from-big-endian-to-little-endian
-void changeEndianness(char *value);
+void bigEndianToLittleEndian(char *value);
 
 // Pad x to be a multiple of padding
 inline long long unsigned int pad(long long unsigned int x, unsigned int padding);
@@ -108,4 +108,3 @@ inline long long unsigned int pad(long long unsigned int x, unsigned int padding
 } // isa
 
 #endif // UTILS_HPP
-
