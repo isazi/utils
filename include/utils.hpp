@@ -13,9 +13,7 @@
 // limitations under the License.
 
 #include <string>
-using std::string;
 #include <sstream>
-using std::stringstream;
 #include <cstdlib>
 
 
@@ -27,11 +25,11 @@ namespace isa {
 namespace utils {
 
 // Convert value into a string
-template< typename T > string *toString(T value);
-template< typename T > inline string toStringValue(T value);
+template< typename T > inline std::string toString(T value);
+template< typename T > inline std::string * toStringPointer(T value);
 
 // Replace the occurrences of placeholder in src with value
-string *replace(string *src, string placeholder, string &value, bool deleteSrc = false);
+string *replace(string *src, std::string placeholder, std::string &value, bool deleteSrc = false);
 
 // Casts value from N to T
 template< typename N, typename T > T castToType(N value);
@@ -55,21 +53,21 @@ void bigEndianToLittleEndian(char *value);
 // Pad x to be a multiple of padding
 inline long long unsigned int pad(long long unsigned int x, unsigned int padding);
 
-// Implementations
 
-template< typename T > string *toString(T value) {
-	string temp = castToType< T, string >(value);
-	return new string(temp);
+// Implementations
+template< typename T > inline std::string toString(T value) {
+	return castToType< T, std::string >(value);
 }
 
-template< typename T > inline string toStringValue(T value) {
-	return castToType< T, string >(value);
+template< typename T > inline std::string * toStringPointer(T value) {
+	std::string temp = castToType< T, std::string >(value);
+	return new string(temp);
 }
 
 template< typename N, typename T > T castToType(N value) {
 	T toRet;
 
-	stringstream converter;
+  std::stringstream converter;
 	converter << value;
 	converter >> toRet;
 
