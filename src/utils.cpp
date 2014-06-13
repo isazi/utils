@@ -18,7 +18,7 @@ namespace isa {
 
 namespace utils {
 
-std::string *replace(std::string *src, std::string placeholder, std::string &value, bool deleteSrc) {
+std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc) {
 	std::string *toRet = new std::string();
 	size_t pos = 0;
 	size_t oldPos = 0;
