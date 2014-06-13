@@ -18,12 +18,12 @@ namespace isa {
 
 namespace utils {
 
-string *replace(string *src, string placeholder, string &value, bool deleteSrc) {
-	string *toRet = new string();
+std::string *replace(std::string *src, std::string placeholder, std::string &value, bool deleteSrc) {
+	std::string *toRet = new std::string();
 	size_t pos = 0;
 	size_t oldPos = 0;
 
-	while ( (pos = src->find(placeholder, pos)) < string::npos ) {
+	while ( (pos = src->find(placeholder, pos)) < std::string::npos ) {
 		toRet->append(src->substr(oldPos, pos - oldPos));
 		toRet->append(value);
 		pos += placeholder.length();
