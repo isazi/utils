@@ -64,6 +64,26 @@ template< typename T > inline std::string * toStringPointer(T value) {
 	return new std::string(temp);
 }
 
+std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc) {
+	std::string *toRet = new std::string();
+	size_t pos = 0;
+	size_t oldPos = 0;
+
+	while ( (pos = src->find(placeholder, pos)) < std::string::npos ) {
+		toRet->append(src->substr(oldPos, pos - oldPos));
+		toRet->append(value);
+		pos += placeholder.length();
+		oldPos = pos;
+	}
+	toRet->append(src->substr(oldPos));
+
+	if ( deleteSrc ) {
+		delete src;
+	}
+
+	return toRet;
+}
+
 template< typename N, typename T > T castToType(N value) {
 	T toRet;
 
@@ -92,6 +112,15 @@ inline double gibi(long long unsigned int x) {
 
 inline double mebi(long long unsigned int x) {
 	return x / 1048576.0;
+}
+
+void bigEndianToLittleEndian(char *value) {
+	unsigned int bitMap = *(reinterpret_cast< unsigned int * >(value));
+
+	bitMap = ((bitMap >> 8) & 0x00ff00ff) | ((bitMap << 8) & 0xff00ff00);
+	bitMap = ((bitMap >> 16) & 0x0000ffff) | ((bitMap << 16) & 0xffff0000);
+
+	*value = bitMap;
 }
 
 inline long long unsigned int pad(long long unsigned int x, unsigned int padding) {
