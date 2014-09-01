@@ -55,13 +55,11 @@ public:
 	~SwitchNotFound() throw () {}
 
 	const char *what() const throw () {
-		message = "Switch \"" + opt + "\" not found.";
-		return message.c_str();
+		return ("Switch \"" + opt + "\" not found.").c_str();
 	}
 
 private:
 	string opt;
-  string message;
 };
 
 
@@ -71,13 +69,11 @@ public:
 	~AllocationError() throw () {}
 
 	const char *what() const throw () {
-		message = "Cannot allocate memory for " + name + ".";
-		return message.c_str();
+		return ("Cannot allocate memory for " + name + ".").c_str();
 	}
 
 private:
 	string name;
-  string message;
 };
 
 
