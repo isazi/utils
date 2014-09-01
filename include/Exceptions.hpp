@@ -33,8 +33,7 @@ public:
 	~OpenCLError() throw () {}
 
 	const char *what() const throw () {
-		string toRet = "OpenCL error: " + message;
-		return toRet.c_str();
+		return message.c_str();
 	}
 
 private:
@@ -56,12 +55,13 @@ public:
 	~SwitchNotFound() throw () {}
 
 	const char *what() const throw () {
-		string toRet = "Switch \"" + opt + "\" not found.";
-		return toRet.c_str();
+		message = "Switch \"" + opt + "\" not found.";
+		return message.c_str();
 	}
 
 private:
 	string opt;
+  string message;
 };
 
 
@@ -71,12 +71,13 @@ public:
 	~AllocationError() throw () {}
 
 	const char *what() const throw () {
-		string toRet = "Cannot allocate memory for " + name + ".";
-		return toRet.c_str();
+		message = "Cannot allocate memory for " + name + ".";
+		return message.c_str();
 	}
 
 private:
 	string name;
+  string message;
 };
 
 
