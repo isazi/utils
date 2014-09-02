@@ -13,79 +13,88 @@
 // limitations under the License.
 
 #include <string>
-using std::string;
 #include <sstream>
 #include <list>
-using std::list;
 #include <typeinfo>
 
 #include <utils.hpp>
-#include <Exceptions.hpp>
-using isa::Exceptions::EmptyCommandLine;
-using isa::Exceptions::SwitchNotFound;
 
 
 #ifndef ARGUMENT_LIST_HPP
 #define ARGUMENT_LIST_HPP
 
 namespace isa {
-
 namespace utils {
 
+// Exception: no items in the command line
+class EmptyCommandLine : public exception {};
+// Exception: requested switch not present
+class SwitchNotFound : public exception {
+public:
+  SwitchNotFound(std:::string option);
+  ~SwitchNotFound() throw ();
+
+  const char *what() const throw ();
+
+private:
+  std::string option;
+};
+
+
+// ArgumentList class
 class ArgumentList {
 public:
-	ArgumentList(int argc, char *argv[]);
+	ArgumentList(int argc, char * argv[]);
 	~ArgumentList();
 
 	string getName();
 	template< typename T > T getFirst() throw(EmptyCommandLine);
 	bool getSwitch(const string opt) throw(EmptyCommandLine);
-	template< typename T > T getSwitchArgument(const string opt) throw(EmptyCommandLine, SwitchNotFound);
+	template< typename T > T getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound);
 
 private:
-	list< string > args;
-	string name;
+  std::list< std::string > args;
+  std::string name;
 };
 
 
 // Implementations
 
-ArgumentList::ArgumentList(int argc, char *argv[]) {
-	name = string(argv[0]);
+SwitchNotFound::SwitchNotFound(std::string option) : option(option) {}
 
-	for ( int i(1); i < argc; i++ ) {
-		string temp = string(argv[i]);
-		args.push_back(temp);
-	}
+const char * SwitchNotFound::what() throw() {
+  return ("Switch \"" + option + "\" not found.").c_str();
 }
 
+ArgumentList::ArgumentList(int argc, char * argv[]) {
+  name = std::string(argv[0]);
 
-ArgumentList::~ArgumentList() {
+  for ( unsigned int i = 1; i < argc; i++ ) {
+    args.push_back(std::string(argv[1]));
+  }
 }
 
-
-string ArgumentList::getName() {
+std::string ArgumentList::getName() {
 	return name;
 }
-
 
 template< typename T > T ArgumentList::getFirst() throw(EmptyCommandLine) {
 	if ( args.empty() ) {
 		throw EmptyCommandLine();
 	}
 
-	string temp = args.front();
+  std::string temp = args.front();
 	args.pop_front();
-	return castToType< string, T >(temp);
+	return castToType< std::string, T >(temp);
 }
 
 
-bool ArgumentList::getSwitch(const string opt) throw(EmptyCommandLine) {
+bool ArgumentList::getSwitch(const std::string opt) throw(EmptyCommandLine) {
 	if ( args.empty() ) {
 		return false;
 	}
 
-	for ( list< string >::iterator s = args.begin(); s != args.end(); s++ ) {
+	for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
 		if ( opt.compare(*s) == 0 ) {
 			args.erase(s);
 			return true;
@@ -96,17 +105,15 @@ bool ArgumentList::getSwitch(const string opt) throw(EmptyCommandLine) {
 }
 
 
-template< class T > T ArgumentList::getSwitchArgument(const string opt) throw(EmptyCommandLine, SwitchNotFound) {
-	T retVal;
-
+template< class T > T ArgumentList::getSwitchArgument(const std::string opt) throw(EmptyCommandLine, SwitchNotFound) {
 	if ( args.empty() ) {
 		throw EmptyCommandLine();
 	}
 
-	for ( list< string >::iterator s = args.begin(); s != args.end(); s++ ) {
+	for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
 		if ( opt.compare(*s) == 0 ) {
-			string temp = *(++s);
-			retVal = castToType< string, T >(temp);
+      std::string temp = *(++s);
+			T retVal = castToType< std::string, T >(temp);
 
 			args.erase(s);
 			args.erase(--s);
