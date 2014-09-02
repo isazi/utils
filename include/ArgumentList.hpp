@@ -27,9 +27,9 @@ namespace isa {
 namespace utils {
 
 // Exception: no items in the command line
-class EmptyCommandLine : public exception {};
+class EmptyCommandLine : public std::exception {};
 // Exception: requested switch not present
-class SwitchNotFound : public exception {
+class SwitchNotFound : public std::exception {
 public:
   SwitchNotFound(std:::string option);
   ~SwitchNotFound() throw ();

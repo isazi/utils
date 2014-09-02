@@ -40,29 +40,6 @@ private:
 	string message;
 };
 
-
-class EmptyCommandLine : public exception {
-public:
-	const char *what() const throw () {
-		return "Empty command line.";
-	}
-};
-
-
-class SwitchNotFound : public exception {
-public:
-	SwitchNotFound(string opt) : opt(opt) {}
-	~SwitchNotFound() throw () {}
-
-	const char *what() const throw () {
-		return ("Switch \"" + opt + "\" not found.").c_str();
-	}
-
-private:
-	string opt;
-};
-
-
 class AllocationError : public exception {
 public:
 	AllocationError(string name) : name(name) {}
