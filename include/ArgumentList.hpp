@@ -62,7 +62,7 @@ private:
 
 SwitchNotFound::SwitchNotFound(std::string option) : option(option) {}
 
-const char * SwitchNotFound::what() throw() {
+const char * SwitchNotFound::what() const throw() {
   return ("Switch \"" + option + "\" not found.").c_str();
 }
 
