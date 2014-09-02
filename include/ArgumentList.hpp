@@ -13,8 +13,8 @@
 // limitations under the License.
 
 #include <string>
-#include <sstream>
 #include <list>
+#include <exception>
 #include <typeinfo>
 
 #include <utils.hpp>
