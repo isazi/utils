@@ -49,7 +49,7 @@ public:
 
   std::string getName();
 	template< typename T > T getFirst() throw(EmptyCommandLine);
-	bool getSwitch(const std::string opt) throw(EmptyCommandLine);
+	bool getSwitch(const std::string & option) throw(EmptyCommandLine);
 	template< typename T > T getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound);
 
 private:
@@ -89,13 +89,13 @@ template< typename T > T ArgumentList::getFirst() throw(EmptyCommandLine) {
 }
 
 
-bool ArgumentList::getSwitch(const std::string opt) throw(EmptyCommandLine) {
+bool ArgumentList::getSwitch(const std::string & option) throw(EmptyCommandLine) {
 	if ( args.empty() ) {
 		return false;
 	}
 
 	for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
-		if ( opt.compare(*s) == 0 ) {
+		if ( option.compare(*s) == 0 ) {
 			args.erase(s);
 			return true;
 		}
@@ -105,13 +105,13 @@ bool ArgumentList::getSwitch(const std::string opt) throw(EmptyCommandLine) {
 }
 
 
-template< class T > T ArgumentList::getSwitchArgument(const std::string opt) throw(EmptyCommandLine, SwitchNotFound) {
+template< class T > T ArgumentList::getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound) {
 	if ( args.empty() ) {
 		throw EmptyCommandLine();
 	}
 
 	for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
-		if ( opt.compare(*s) == 0 ) {
+		if ( option.compare(*s) == 0 ) {
       std::string temp = *(++s);
 			T retVal = castToType< std::string, T >(temp);
 
@@ -121,7 +121,7 @@ template< class T > T ArgumentList::getSwitchArgument(const std::string opt) thr
 		}
 	}
 
-	throw SwitchNotFound(opt);
+	throw SwitchNotFound(option);
 }
 
 } // utils
