@@ -31,7 +31,7 @@ class EmptyCommandLine : public std::exception {};
 // Exception: requested switch not present
 class SwitchNotFound : public std::exception {
 public:
-  SwitchNotFound(std:::string option);
+  SwitchNotFound(std::string option);
   ~SwitchNotFound() throw ();
 
   const char *what() const throw ();
@@ -47,9 +47,9 @@ public:
 	ArgumentList(int argc, char * argv[]);
 	~ArgumentList();
 
-	string getName();
+  std::string getName();
 	template< typename T > T getFirst() throw(EmptyCommandLine);
-	bool getSwitch(const string opt) throw(EmptyCommandLine);
+	bool getSwitch(const std::string opt) throw(EmptyCommandLine);
 	template< typename T > T getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound);
 
 private:
