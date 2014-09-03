@@ -72,7 +72,7 @@ ArgumentList::ArgumentList(int argc, char * argv[]) {
   name = std::string(argv[0]);
 
   for ( unsigned int i = 1; i < argc; i++ ) {
-    args.push_back(std::string(argv[1]));
+    args.push_back(std::string(argv[i]));
   }
 }
 
