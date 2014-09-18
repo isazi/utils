@@ -13,12 +13,7 @@
 // limitations under the License.
 
 #include <ctime>
-#include <string>
-using std::string;
 #include <chrono>
-using std::chrono::duration_cast;
-using std::chrono::duration;
-using std::chrono::high_resolution_clock;
 
 #include <Stats.hpp>
 
@@ -31,7 +26,7 @@ namespace utils {
 
 class Timer {
 public:
-	Timer(string name);
+	Timer();
 
 	void start();
 	void stop();
@@ -45,8 +40,7 @@ public:
 
 private:
 	Stats< double > stats;
-	string name;
-	high_resolution_clock::time_point starting;
+  std::chrono::high_resolution_clock::time_point starting;
 	double totalTime;
 	double time;
 };
@@ -54,20 +48,20 @@ private:
 
 // Implementation
 
-Timer::Timer(string name) : stats(Stats< double >()), name(name), starting(high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
+Timer::Timer() : stats(Stats< double >()), starting(std::chrono::high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
 
 void Timer::start() {
-	starting = high_resolution_clock::now();
+	starting = std::chrono::high_resolution_clock::now();
 }
 
 void Timer::stop() {
-	time = (duration_cast< duration< double > >(high_resolution_clock::now() - starting)).count();
+	time = (std::chrono::duration_cast< std::chrono::duration< double > >(std::chrono::high_resolution_clock::now() - starting)).count();
 	totalTime += time;
 	stats.addElement(time);
 }
 
 void Timer::reset() {
-	starting = high_resolution_clock::time_point();
+	starting = std::chrono::high_resolution_clock::time_point();
 	totalTime = 0.0;
 	time = 0.0;
 }
