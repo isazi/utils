@@ -29,7 +29,7 @@ template< typename T > inline std::string toString(T value);
 template< typename T > inline std::string * toStringPointer(T value);
 
 // Replace the occurrences of placeholder in src with value
-std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc = false);
+inline std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc = false);
 
 // Casts value from N to T
 template< typename N, typename T > T castToType(N value);
@@ -64,7 +64,7 @@ template< typename T > inline std::string * toStringPointer(T value) {
 	return new std::string(temp);
 }
 
-std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc) {
+inline std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc) {
 	std::string *toRet = new std::string();
 	size_t pos = 0;
 	size_t oldPos = 0;
