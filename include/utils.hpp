@@ -46,9 +46,9 @@ inline double gibi(long long unsigned int x);
 // Divide x by 2^20
 inline double mebi(long long unsigned int x);
 
-// Modify the endianness of a 32 bits number
+// Modify the endianness of a 32 bits value
 // See http://stackoverflow.com/questions/2782725/converting-float-values-from-big-endian-to-little-endian
-void bigEndianToLittleEndian(char *value);
+inline void bigEndianToLittleEndian(char * value);
 
 // Pad x to be a multiple of padding
 inline long long unsigned int pad(long long unsigned int x, unsigned int padding);
@@ -114,7 +114,7 @@ inline double mebi(long long unsigned int x) {
 	return x / 1048576.0;
 }
 
-void bigEndianToLittleEndian(char *value) {
+inline void bigEndianToLittleEndian(char * value) {
 	unsigned int bitMap = *(reinterpret_cast< unsigned int * >(value));
 
 	bitMap = ((bitMap >> 8) & 0x00ff00ff) | ((bitMap << 8) & 0xff00ff00);
