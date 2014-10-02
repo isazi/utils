@@ -37,9 +37,10 @@ public:
 	inline double getLastRunTime() const;
 	inline double getAverageTime() const;
 	inline double getStandardDeviation() const;
+  inline double getCoefficientOfVariation() const;
 
 private:
-	Stats< double > stats;
+  Stats< double > stats;
   std::chrono::high_resolution_clock::time_point starting;
 	double totalTime;
 	double time;
@@ -84,6 +85,10 @@ inline double Timer::getAverageTime() const {
 
 inline double Timer::getStandardDeviation() const {
 	return stats.getStandardDeviation();
+}
+
+inline double Timer::getCoefficientOfVariation() const {
+  return stats.getCoefficientOfVariation();
 }
 
 } // utils
