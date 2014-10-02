@@ -75,6 +75,8 @@ template< typename T > inline void Stats< T >::reset() {
 	nrElements = 0;
 	mean = 0.0;
 	variance = 0.0;
+  min = std::numeric_limits< T >::max();
+  max = std::numeric_limits< T >::min();
 }
 
 template< typename T > inline long long unsigned int Stats< T >::getNrElements() const {
