@@ -79,7 +79,7 @@ inline double Timer::getLastRunTime() const {
 }
 
 inline double Timer::getAverageTime() const {
-	return stats.getAverage();
+	return stats.getMean();
 }
 
 inline double Timer::getStandardDeviation() const {
