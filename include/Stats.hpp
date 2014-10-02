@@ -30,38 +30,38 @@ public:
 	inline void reset();
 
 	inline long long unsigned int getNrElements() const;
-	inline double getAverage() const;
+	inline double getMean() const;
 	inline double getVariance() const;
 	inline double getStdDev() const;
 
 private:
 	long long unsigned int nrElements;
-	double average;
+	double mean;
 	double variance;
 };
 
 // Implementations
 
-template< typename T > Stats< T >::Stats() : nrElements(0), average(0.0), variance(0.0) {}
+template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), variance(0.0) {}
 
 template< typename T > Stats< T >::~Stats() {}
 
 template< typename T > inline void Stats< T >::addElement(T element) {
-	double oldAverage = average;
+	double oldMean = mean;
 
 	nrElements++;
 
 	if ( nrElements == 1 ) {
-		average = static_cast< double >(element);
+		mean = static_cast< double >(element);
 		return;
 	}
-	average = oldAverage + ((element - oldAverage) / nrElements);
-	variance += (element - oldAverage) * (element - average);
+	mean = oldMean + ((element - oldMean) / nrElements);
+	variance += (element - oldMean) * (element - mean);
 }
 
 template< typename T > inline void Stats< T >::reset() {
 	nrElements = 0;
-	average = 0.0;
+	mean = 0.0;
 	variance = 0.0;
 }
 
@@ -69,8 +69,8 @@ template< typename T > inline long long unsigned int Stats< T >::getNrElements()
 	return nrElements;
 }
 
-template< typename T > inline double Stats< T >::getAverage() const {
-	return average;
+template< typename T > inline double Stats< T >::getMean() const {
+	return mean;
 }
 
 template< typename T > inline double Stats< T >::getVariance() const {
