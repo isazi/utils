@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <cmath>
+#include <limits>
 
 
 #ifndef STATS_HPP
@@ -33,16 +34,20 @@ public:
 	inline double getMean() const;
 	inline double getVariance() const;
 	inline double getStdDev() const;
+  inline T getMin() const;
+  inline T getMax() const;
 
 private:
 	long long unsigned int nrElements;
 	double mean;
 	double variance;
+  T min;
+  T max;
 };
 
 // Implementations
 
-template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), variance(0.0) {}
+template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), variance(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
 
 template< typename T > Stats< T >::~Stats() {}
 
@@ -53,10 +58,17 @@ template< typename T > inline void Stats< T >::addElement(T element) {
 
 	if ( nrElements == 1 ) {
 		mean = static_cast< double >(element);
+    min = element;
+    max = element;
 		return;
 	}
 	mean = oldMean + ((element - oldMean) / nrElements);
 	variance += (element - oldMean) * (element - mean);
+  if ( element < min ) {
+    min = element;
+  } else if ( element > max ) {
+    max = element;
+  }
 }
 
 template< typename T > inline void Stats< T >::reset() {
@@ -83,6 +95,14 @@ template< typename T > inline double Stats< T >::getVariance() const {
 
 template< typename T > inline double Stats< T >::getStdDev() const {
 	return sqrt(this->getVariance());
+}
+
+template< typename T > inline T Stats< T >::getMin() const {
+  return min;
+}
+
+template< typename T > inline T Stats< T >::getMax() const {
+  return max;
 }
 
 } // utils
