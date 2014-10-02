@@ -36,7 +36,7 @@ public:
 	inline double getTotalTime() const;
 	inline double getLastRunTime() const;
 	inline double getAverageTime() const;
-	inline double getStdDev() const;
+	inline double getStandardDeviation() const;
 
 private:
 	Stats< double > stats;
@@ -82,8 +82,8 @@ inline double Timer::getAverageTime() const {
 	return stats.getAverage();
 }
 
-inline double Timer::getStdDev() const {
-	return stats.getStdDev();
+inline double Timer::getStandardDeviation() const {
+	return stats.getStandardDeviation();
 }
 
 } // utils
