@@ -74,14 +74,19 @@ template< typename T > inline double Stats< T >::getMean() const {
 }
 
 template< typename T > inline double Stats< T >::getVariance() const {
-	return variance;
+  if ( nrElements > 1 ) {
+    return variance / (nrElements - 1);
+  } else {
+    return 0.0;
+  }
 }
 
 template< typename T > inline double Stats< T >::getStdDev() const {
-	return sqrt(variance / nrElements);
+	return sqrt(this->getVariance());
 }
 
 } // utils
 } // isa
 
 #endif
+
