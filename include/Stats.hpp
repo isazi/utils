@@ -32,6 +32,7 @@ public:
 
 	inline long long unsigned int getNrElements() const;
 	inline double getMean() const;
+  inline double getHarmonicMean() const;
 	inline double getVariance() const;
 	inline double getStdDev() const;
   inline T getMin() const;
@@ -40,6 +41,7 @@ public:
 private:
 	long long unsigned int nrElements;
 	double mean;
+  double harmonicMean;
 	double variance;
   T min;
   T max;
@@ -47,7 +49,7 @@ private:
 
 // Implementations
 
-template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), variance(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
+template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), harmonicMean(0.0), variance(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
 
 template< typename T > Stats< T >::~Stats() {}
 
@@ -58,11 +60,13 @@ template< typename T > inline void Stats< T >::addElement(T element) {
 
 	if ( nrElements == 1 ) {
 		mean = static_cast< double >(element);
+    harmonicMean = static_cast< double >(1.0 / element);
     min = element;
     max = element;
 		return;
 	}
 	mean = oldMean + ((element - oldMean) / nrElements);
+  harmonicMean += static_cast< double >(1.0 / element);
 	variance += (element - oldMean) * (element - mean);
   if ( element < min ) {
     min = element;
@@ -74,6 +78,7 @@ template< typename T > inline void Stats< T >::addElement(T element) {
 template< typename T > inline void Stats< T >::reset() {
 	nrElements = 0;
 	mean = 0.0;
+  harmonicMean = 0.0;
 	variance = 0.0;
   min = std::numeric_limits< T >::max();
   max = std::numeric_limits< T >::min();
@@ -85,6 +90,10 @@ template< typename T > inline long long unsigned int Stats< T >::getNrElements()
 
 template< typename T > inline double Stats< T >::getMean() const {
 	return mean;
+}
+
+template< typename T > inline double Stats< T >::getHarmonicMean() const {
+  return nrElements / harmonicMean;
 }
 
 template< typename T > inline double Stats< T >::getVariance() const {
