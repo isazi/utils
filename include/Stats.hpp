@@ -36,7 +36,6 @@ public:
 	inline double getVariance() const;
 	inline double getStandardDeviation() const;
   inline double getCoefficientOfVariation() const;
-  inline double getCoefficientOfSkewness() const;
   inline T getMin() const;
   inline T getMax() const;
 
@@ -45,14 +44,13 @@ private:
 	double mean;
   double harmonicMean;
 	double variance;
-  double skewness;
   T min;
   T max;
 };
 
 // Implementations
 
-template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), harmonicMean(0.0), variance(0.0), skewness(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
+template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), harmonicMean(0.0), variance(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
 
 template< typename T > Stats< T >::~Stats() {}
 
@@ -64,7 +62,6 @@ template< typename T > void Stats< T >::addElement(T element) {
 	if ( nrElements == 1 ) {
 		mean = static_cast< double >(element);
     harmonicMean = static_cast< double >(1.0 / element);
-    skewness = std::pow(element - this->getMean(), 3.0);
     min = element;
     max = element;
 		return;
@@ -72,7 +69,6 @@ template< typename T > void Stats< T >::addElement(T element) {
 	mean = oldMean + ((element - oldMean) / nrElements);
   harmonicMean += static_cast< double >(1.0 / element);
 	variance += (element - oldMean) * (element - mean);
-  skewness += std::pow(element - this->getMean(), 3.0);
 
   if ( element < min ) {
     min = element;
@@ -86,7 +82,6 @@ template< typename T > inline void Stats< T >::reset() {
 	mean = 0.0;
   harmonicMean = 0.0;
 	variance = 0.0;
-  skewness = 0.0;
   min = std::numeric_limits< T >::max();
   max = std::numeric_limits< T >::min();
 }
@@ -121,14 +116,6 @@ template< typename T > inline double Stats< T >::getStandardDeviation() const {
 
 template< typename T > inline double Stats< T >::getCoefficientOfVariation() const {
   return this->getStandardDeviation() / this->getMean();
-}
-
-template< typename T > inline double Stats< T >::getCoefficientOfSkewness() const {
-  if ( nrElements > 1 ) {
-    return skewness / (nrElements * std::pow(this->getStandardDeviation(), 3.0));
-  } else {
-    return 0.0;
-  }
 }
 
 template< typename T > inline T Stats< T >::getMin() const {
