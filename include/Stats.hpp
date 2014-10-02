@@ -35,6 +35,7 @@ public:
   inline double getHarmonicMean() const;
 	inline double getVariance() const;
 	inline double getStdDev() const;
+  inline double getCoefficientOfVariation() const;
   inline T getMin() const;
   inline T getMax() const;
 
@@ -106,6 +107,10 @@ template< typename T > inline double Stats< T >::getVariance() const {
 
 template< typename T > inline double Stats< T >::getStdDev() const {
 	return sqrt(this->getVariance());
+}
+
+template< typename T > inline double Stats< T >::getCoefficientOfVariation() const {
+  return this->getStdDev() / this->getMean();
 }
 
 template< typename T > inline T Stats< T >::getMin() const {
