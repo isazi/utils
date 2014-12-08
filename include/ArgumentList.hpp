@@ -68,10 +68,8 @@ const char * SwitchNotFound::what() const throw() {
   return ("Switch \"" + option + "\" not found.").c_str();
 }
 
-ArgumentList::ArgumentList(int argc, char * argv[]) {
-  name = std::string(argv[0]);
-
-  for ( unsigned int i = 1; i < argc; i++ ) {
+ArgumentList::ArgumentList(int argc, char * argv[]) : name(std::string(argv[0])) {
+  for ( int i = 1; i < argc; i++ ) {
     args.push_back(std::string(argv[i]));
   }
 }
