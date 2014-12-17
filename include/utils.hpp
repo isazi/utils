@@ -15,6 +15,7 @@
 #include <string>
 #include <sstream>
 #include <cstdlib>
+#include <cmath>
 
 
 #ifndef UTILS_HPP
