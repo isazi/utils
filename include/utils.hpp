@@ -128,7 +128,7 @@ inline long long unsigned int pad(long long unsigned int x, unsigned int padding
 	if ( (x % padding) == 0 ) {
 		return x;
 	} else {
-    return static_cast< long long unsigned int >(std::ceil(x / static_cast< double >(padding)));
+    return static_cast< long long unsigned int >(padding * std::ceil(x / static_cast< double >(padding)));
 	}
 }
 
