@@ -34,7 +34,7 @@ public:
   SwitchNotFound(std::string option);
   ~SwitchNotFound() throw ();
 
-  const char *what() const throw ();
+  const char * what() const throw ();
 
 private:
   std::string option;
@@ -59,27 +59,6 @@ private:
 
 
 // Implementations
-
-SwitchNotFound::SwitchNotFound(std::string option) : option(option) {}
-
-SwitchNotFound::~SwitchNotFound() throw () {}
-
-const char * SwitchNotFound::what() const throw() {
-  return ("Switch \"" + option + "\" not found.").c_str();
-}
-
-ArgumentList::ArgumentList(int argc, char * argv[]) : name(std::string(argv[0])) {
-  for ( int i = 1; i < argc; i++ ) {
-    args.push_back(std::string(argv[i]));
-  }
-}
-
-ArgumentList::~ArgumentList() {}
-
-inline std::string ArgumentList::getName() {
-	return name;
-}
-
 template< typename T > T ArgumentList::getFirst() throw(EmptyCommandLine) {
 	if ( args.empty() ) {
 		throw EmptyCommandLine();
@@ -89,23 +68,6 @@ template< typename T > T ArgumentList::getFirst() throw(EmptyCommandLine) {
 	args.pop_front();
 	return castToType< std::string, T >(temp);
 }
-
-
-bool ArgumentList::getSwitch(const std::string & option) throw(EmptyCommandLine) {
-	if ( args.empty() ) {
-		return false;
-	}
-
-	for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
-		if ( option.compare(*s) == 0 ) {
-			args.erase(s);
-			return true;
-		}
-	}
-
-	return false;
-}
-
 
 template< class T > T ArgumentList::getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound) {
 	if ( args.empty() ) {
