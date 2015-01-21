@@ -46,51 +46,6 @@ private:
 	double time;
 };
 
-
-// Implementation
-
-Timer::Timer() : stats(Stats< double >()), starting(std::chrono::high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
-
-void Timer::start() {
-	starting = std::chrono::high_resolution_clock::now();
-}
-
-void Timer::stop() {
-	time = (std::chrono::duration_cast< std::chrono::duration< double > >(std::chrono::high_resolution_clock::now() - starting)).count();
-	totalTime += time;
-	stats.addElement(time);
-}
-
-void Timer::reset() {
-	starting = std::chrono::high_resolution_clock::time_point();
-	totalTime = 0.0;
-	time = 0.0;
-}
-
-inline unsigned int Timer::getNrRuns() const {
-	return stats.getNrElements();
-}
-
-inline double Timer::getTotalTime() const {
-	return totalTime;
-}
-
-inline double Timer::getLastRunTime() const {
-	return time;
-}
-
-inline double Timer::getAverageTime() const {
-	return stats.getMean();
-}
-
-inline double Timer::getStandardDeviation() const {
-	return stats.getStandardDeviation();
-}
-
-inline double Timer::getCoefficientOfVariation() const {
-  return stats.getCoefficientOfVariation();
-}
-
 } // utils
 } // isa
 
