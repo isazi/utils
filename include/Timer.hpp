@@ -32,12 +32,12 @@ public:
 	void stop();
 	void reset();
 
-	inline unsigned int getNrRuns() const;
-	inline double getTotalTime() const;
-	inline double getLastRunTime() const;
-	inline double getAverageTime() const;
-	inline double getStandardDeviation() const;
-  inline double getCoefficientOfVariation() const;
+	unsigned int getNrRuns() const;
+	double getTotalTime() const;
+	double getLastRunTime() const;
+	double getAverageTime() const;
+	double getStandardDeviation() const;
+  double getCoefficientOfVariation() const;
 
 private:
   Stats< double > stats;
@@ -45,6 +45,32 @@ private:
 	double totalTime;
 	double time;
 };
+
+// Implementations
+
+inline unsigned int Timer::getNrRuns() const {
+	return stats.getNrElements();
+}
+
+inline double Timer::getTotalTime() const {
+	return totalTime;
+}
+
+inline double Timer::getLastRunTime() const {
+	return time;
+}
+
+inline double Timer::getAverageTime() const {
+	return stats.getMean();
+}
+
+inline double Timer::getStandardDeviation() const {
+	return stats.getStandardDeviation();
+}
+
+inline double Timer::getCoefficientOfVariation() const {
+  return stats.getCoefficientOfVariation();
+}
 
 } // utils
 } // isa

@@ -26,36 +26,37 @@ namespace isa {
 namespace utils {
 
 // Convert value into a string
-template< typename T > inline std::string toString(T value);
-template< typename T > inline std::string * toStringPointer(T value);
+template< typename T > std::string toString(T value);
+template< typename T > std::string * toStringPointer(T value);
 
 // Replace the occurrences of placeholder in src with value
-inline std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc = false);
+std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc = false);
 
 // Casts value from N to T
 template< typename N, typename T > T castToType(N value);
 
 // Compare two single precision floats
-inline bool same(const float result, const float expected);
+bool same(const float result, const float expected);
 
 // Divide x by 10^9
-inline double giga(long long unsigned int x);
+double giga(long long unsigned int x);
 // Divide x by 10^6
-inline double mega(long long unsigned int x);
+double mega(long long unsigned int x);
 // Divide x by 2^30
-inline double gibi(long long unsigned int x);
+double gibi(long long unsigned int x);
 // Divide x by 2^20
-inline double mebi(long long unsigned int x);
+double mebi(long long unsigned int x);
 
 // Modify the endianness of a 32 bits value
 // See http://stackoverflow.com/questions/2782725/converting-float-values-from-big-endian-to-little-endian
-inline void bigEndianToLittleEndian(char * value);
+void bigEndianToLittleEndian(char * value);
 
 // Pad x to be a multiple of padding
-inline long long unsigned int pad(long long unsigned int x, unsigned int padding);
+long long unsigned int pad(long long unsigned int x, unsigned int padding);
 
 
 // Implementations
+
 template< typename T > inline std::string toString(T value) {
 	return castToType< T, std::string >(value);
 }
@@ -73,6 +74,34 @@ template< typename N, typename T > T castToType(N value) {
 	converter >> toRet;
 
 	return toRet;
+}
+
+inline bool same(const float result, const float expected) {
+	return abs(result - expected) < 1e-6;
+}
+
+inline double giga(long long unsigned int x) {
+	return x / 1000000000.0;
+}
+
+inline double mega(long long unsigned int x) {
+	return x / 1000000.0;
+}
+
+inline double gibi(long long unsigned int x) {
+	return x / 1073741824.0;
+}
+
+inline double mebi(long long unsigned int x) {
+	return x / 1048576.0;
+}
+
+inline long long unsigned int pad(long long unsigned int x, unsigned int padding) {
+	if ( (x % padding) == 0 ) {
+		return x;
+	} else {
+    return static_cast< long long unsigned int >(padding * std::ceil(x / static_cast< double >(padding)));
+	}
 }
 
 } // utils

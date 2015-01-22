@@ -47,7 +47,7 @@ public:
 	ArgumentList(int argc, char * argv[]);
 	~ArgumentList();
 
-  inline std::string getName();
+  std::string getName();
 	template< typename T > T getFirst() throw(EmptyCommandLine);
 	bool getSwitch(const std::string & option) throw(EmptyCommandLine);
 	template< typename T > T getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound);
@@ -59,6 +59,7 @@ private:
 
 
 // Implementations
+
 template< typename T > T ArgumentList::getFirst() throw(EmptyCommandLine) {
 	if ( args.empty() ) {
 		throw EmptyCommandLine();
@@ -86,6 +87,10 @@ template< class T > T ArgumentList::getSwitchArgument(const std::string & option
 	}
 
 	throw SwitchNotFound(option);
+}
+
+inline std::string ArgumentList::getName() {
+	return name;
 }
 
 } // utils

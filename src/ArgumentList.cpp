@@ -33,10 +33,6 @@ ArgumentList::ArgumentList(int argc, char * argv[]) : name(std::string(argv[0]))
 
 ArgumentList::~ArgumentList() {}
 
-inline std::string ArgumentList::getName() {
-	return name;
-}
-
 bool ArgumentList::getSwitch(const std::string & option) throw(EmptyCommandLine) {
 	if ( args.empty() ) {
 		return false;
