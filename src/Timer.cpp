@@ -35,29 +35,5 @@ void Timer::reset() {
 	time = 0.0;
 }
 
-inline unsigned int Timer::getNrRuns() const {
-	return stats.getNrElements();
-}
-
-inline double Timer::getTotalTime() const {
-	return totalTime;
-}
-
-inline double Timer::getLastRunTime() const {
-	return time;
-}
-
-inline double Timer::getAverageTime() const {
-	return stats.getMean();
-}
-
-inline double Timer::getStandardDeviation() const {
-	return stats.getStandardDeviation();
-}
-
-inline double Timer::getCoefficientOfVariation() const {
-  return stats.getCoefficientOfVariation();
-}
-
 } // utils
 } // isa
