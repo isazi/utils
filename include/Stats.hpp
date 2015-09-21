@@ -36,6 +36,7 @@ public:
 	inline double getVariance() const;
 	inline double getStandardDeviation() const;
   inline double getCoefficientOfVariation() const;
+  inline double getRootMeanSquare() const;
   inline T getMin() const;
   inline T getMax() const;
 
@@ -44,13 +45,14 @@ private:
 	double mean;
   double harmonicMean;
 	double variance;
+  double rms;
   T min;
   T max;
 };
 
 // Implementations
 
-template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), harmonicMean(0.0), variance(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
+template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), harmonicMean(0.0), variance(0.0), rms(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
 
 template< typename T > Stats< T >::~Stats() {}
 
@@ -62,6 +64,7 @@ template< typename T > void Stats< T >::addElement(T element) {
 	if ( nrElements == 1 ) {
 		mean = static_cast< double >(element);
     harmonicMean = static_cast< double >(1.0 / element);
+    rms = static_cast< double >(element * element);
     min = element;
     max = element;
 		return;
@@ -69,6 +72,7 @@ template< typename T > void Stats< T >::addElement(T element) {
 	mean = oldMean + ((element - oldMean) / nrElements);
   harmonicMean += static_cast< double >(1.0 / element);
 	variance += (element - oldMean) * (element - mean);
+  rms += static_cast< double >(element * element);
 
   if ( element < min ) {
     min = element;
@@ -82,6 +86,7 @@ template< typename T > inline void Stats< T >::reset() {
 	mean = 0.0;
   harmonicMean = 0.0;
 	variance = 0.0;
+  rms = 0.0;
   min = std::numeric_limits< T >::max();
   max = std::numeric_limits< T >::min();
 }
@@ -116,6 +121,10 @@ template< typename T > inline double Stats< T >::getStandardDeviation() const {
 
 template< typename T > inline double Stats< T >::getCoefficientOfVariation() const {
   return this->getStandardDeviation() / this->getMean();
+}
+
+template< typename T > inline double Stats< T >::getRootMeanSquare() const {
+  return std::sqrt(rms / nrElements);
 }
 
 template< typename T > inline T Stats< T >::getMin() const {
