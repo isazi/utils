@@ -54,6 +54,10 @@ void bigEndianToLittleEndian(char * value);
 // Pad x to be a multiple of padding
 long long unsigned int pad(long long unsigned int x, unsigned int padding);
 
+// Bit operations
+template< typename T > inline uint8_t getBit(const T value, const uint8_t bit);
+template< typename T > inline void setBit(T & value, const uint8_t newBit, const uint8_t bit);
+
 
 // Implementations
 
@@ -102,6 +106,14 @@ inline long long unsigned int pad(long long unsigned int x, unsigned int padding
 	} else {
     return static_cast< long long unsigned int >(padding * std::ceil(x / static_cast< double >(padding)));
 	}
+}
+
+template< typename T > inline uint8_t getBit(const T value, const uint8_t bit) {
+  return static_cast< uint8_t >((value >> bit) & 1);
+}
+
+template< typename T > inline void setBit(T & value, const uint8_t newBit, const uint8_t bit) {
+  value ^= (-newBit ^ value) & (1 << bit);
 }
 
 } // utils
