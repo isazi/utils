@@ -75,13 +75,14 @@ template< class T > T ArgumentList::getSwitchArgument(const std::string & option
 	if ( args.empty() ) {
 		throw EmptyCommandLine();
 	}
+  T retVal;
 
 	for ( std::list< std::string >::iterator item = args.begin(); item != args.end(); ++item ) {
-    std::list< std::string >::iterator next = std::advance(item, 1);
+    std::list< std::string >::iterator next = item;
 
 		if ( option.compare(*item) == 0 ) {
-			T retVal = castToType< std::string, T >(*next);
-
+      std::advance(next, 1);
+			retVal = castToType< std::string, T >(*next);
       std::advance(next, 1);
       args.erase(item, next);
 			return retVal;
