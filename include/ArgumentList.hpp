@@ -80,8 +80,8 @@ template< class T > T ArgumentList::getSwitchArgument(const std::string & option
       std::string temp = *(++s);
 			T retVal = castToType< std::string, T >(temp);
 
-			args.erase(s);
 			args.erase(--s);
+			args.erase(s);
 			return retVal;
 		}
 	}
