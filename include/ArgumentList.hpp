@@ -14,6 +14,7 @@
 
 #include <string>
 #include <list>
+#include <iterator>
 #include <exception>
 #include <typeinfo>
 
@@ -75,13 +76,14 @@ template< class T > T ArgumentList::getSwitchArgument(const std::string & option
 		throw EmptyCommandLine();
 	}
 
-	for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
-		if ( option.compare(*s) == 0 ) {
-      std::string temp = *(++s);
-			T retVal = castToType< std::string, T >(temp);
+	for ( std::list< std::string >::iterator item = args.begin(); item != args.end(); ++item ) {
+    std::list< std::string >::iterator next = std::advance(item, 1);
 
-			args.erase(--s);
-			args.erase(s);
+		if ( option.compare(*item) == 0 ) {
+			T retVal = castToType< std::string, T >(*next);
+
+      std::advance(next, 1);
+      args.erase(item, next);
 			return retVal;
 		}
 	}
