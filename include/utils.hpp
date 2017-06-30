@@ -37,6 +37,10 @@ template< typename N, typename T > T castToType(N value);
 
 // Compare two single precision floats
 bool same(const float result, const float expected);
+bool same(const float result, const float expected, const float error);
+// Compare two double precision floats
+bool same(const double result, const double expected);
+bool same(const double result, const double expected, const double error);
 
 // Divide x by 10^9
 double giga(long long unsigned int x);
@@ -82,6 +86,18 @@ template< typename N, typename T > T castToType(N value) {
 
 inline bool same(const float result, const float expected) {
 	return abs(result - expected) < 1e-6;
+}
+
+inline bool same(const float result, const float expected, const float error) {
+	return abs(result - expected) < error;
+}
+
+inline bool same(const double result, const double expected) {
+	return abs(result - expected) < 1e-6;
+}
+
+inline bool same(const double result, const double expected, const double error) {
+	return abs(result - expected) < error;
 }
 
 inline double giga(long long unsigned int x) {
