@@ -4,12 +4,12 @@ INCLUDES := -I"include"
 
 CC := g++
 CFLAGS := -std=c++11 -Wall
+
 ifdef DEBUG
 	CFLAGS += -O0 -g3
 else
 	CFLAGS += -O3 -g0
 endif
-
 
 all: bin/ArgumentList.o bin/Timer.o bin/utils.o
 	-@mkdir -p lib
