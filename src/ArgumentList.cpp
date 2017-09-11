@@ -34,18 +34,18 @@ ArgumentList::ArgumentList(int argc, char * argv[]) : name(std::string(argv[0]))
 ArgumentList::~ArgumentList() {}
 
 bool ArgumentList::getSwitch(const std::string & option) throw(EmptyCommandLine) {
-	if ( args.empty() ) {
-		return false;
-	}
+  if ( args.empty() ) {
+    return false;
+  }
 
-	for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
-		if ( option.compare(*s) == 0 ) {
-			args.erase(s);
-			return true;
-		}
-	}
+  for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
+    if ( option.compare(*s) == 0 ) {
+      args.erase(s);
+      return true;
+    }
+  }
 
-	return false;
+  return false;
 }
 
 } // utils

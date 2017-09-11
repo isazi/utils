@@ -16,10 +16,10 @@
 #include <sstream>
 #include <cstdlib>
 #include <cmath>
+#include <stdint.h>
 
 
-#ifndef UTILS_HPP
-#define UTILS_HPP
+#pragma once
 
 namespace isa {
 
@@ -62,50 +62,50 @@ template< typename T > inline void setBit(T & value, const uint8_t newBit, const
 // Implementations
 
 template< typename T > inline std::string toString(T value) {
-	return castToType< T, std::string >(value);
+  return castToType< T, std::string >(value);
 }
 
 template< typename T > inline std::string * toStringPointer(T value) {
-	std::string temp = castToType< T, std::string >(value);
-	return new std::string(temp);
+  std::string temp = castToType< T, std::string >(value);
+  return new std::string(temp);
 }
 
 template< typename N, typename T > T castToType(N value) {
-	T toRet;
+  T toRet;
 
   std::stringstream converter;
-	converter << value;
-	converter >> toRet;
+  converter << value;
+  converter >> toRet;
 
-	return toRet;
+  return toRet;
 }
 
 inline bool same(const float result, const float expected) {
-	return std::abs(result - expected) < 1e-6;
+  return std::abs(result - expected) < 1e-6;
 }
 
 inline double giga(long long unsigned int x) {
-	return x / 1000000000.0;
+  return x / 1000000000.0;
 }
 
 inline double mega(long long unsigned int x) {
-	return x / 1000000.0;
+  return x / 1000000.0;
 }
 
 inline double gibi(long long unsigned int x) {
-	return x / 1073741824.0;
+  return x / 1073741824.0;
 }
 
 inline double mebi(long long unsigned int x) {
-	return x / 1048576.0;
+  return x / 1048576.0;
 }
 
 inline long long unsigned int pad(long long unsigned int x, unsigned int padding) {
-	if ( (x % padding) == 0 ) {
-		return x;
-	} else {
+  if ( (x % padding) == 0 ) {
+    return x;
+  } else {
     return static_cast< long long unsigned int >(padding * std::ceil(x / static_cast< double >(padding)));
-	}
+  }
 }
 
 template< typename T > inline uint8_t getBit(const T value, const uint8_t bit) {
@@ -119,4 +119,3 @@ template< typename T > inline void setBit(T & value, const uint8_t newBit, const
 } // utils
 } // isa
 
-#endif // UTILS_HPP

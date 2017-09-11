@@ -12,60 +12,58 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <ctime>
 #include <chrono>
 
-#include <Stats.hpp>
+#include "Stats.hpp"
 
 
-#ifndef TIMER_HPP
-#define TIMER_HPP
+#pragma once
 
 namespace isa {
 namespace utils {
 
 class Timer {
 public:
-	Timer();
+  Timer();
 
-	void start();
-	void stop();
-	void reset();
+  void start();
+  void stop();
+  void reset();
 
-	unsigned int getNrRuns() const;
-	double getTotalTime() const;
-	double getLastRunTime() const;
-	double getAverageTime() const;
-	double getStandardDeviation() const;
+  unsigned int getNrRuns() const;
+  double getTotalTime() const;
+  double getLastRunTime() const;
+  double getAverageTime() const;
+  double getStandardDeviation() const;
   double getCoefficientOfVariation() const;
 
 private:
   Stats< double > stats;
   std::chrono::high_resolution_clock::time_point starting;
-	double totalTime;
-	double time;
+  double totalTime;
+  double time;
 };
 
 // Implementations
 
 inline unsigned int Timer::getNrRuns() const {
-	return stats.getNrElements();
+  return stats.getNrElements();
 }
 
 inline double Timer::getTotalTime() const {
-	return totalTime;
+  return totalTime;
 }
 
 inline double Timer::getLastRunTime() const {
-	return time;
+  return time;
 }
 
 inline double Timer::getAverageTime() const {
-	return stats.getMean();
+  return stats.getMean();
 }
 
 inline double Timer::getStandardDeviation() const {
-	return stats.getStandardDeviation();
+  return stats.getStandardDeviation();
 }
 
 inline double Timer::getCoefficientOfVariation() const {
@@ -74,6 +72,4 @@ inline double Timer::getCoefficientOfVariation() const {
 
 } // utils
 } // isa
-
-#endif // TIMER_HPP
 

@@ -18,11 +18,10 @@
 #include <exception>
 #include <typeinfo>
 
-#include <utils.hpp>
+#include "utils.hpp"
 
 
-#ifndef ARGUMENT_LIST_HPP
-#define ARGUMENT_LIST_HPP
+#pragma once
 
 namespace isa {
 namespace utils {
@@ -45,13 +44,13 @@ private:
 // ArgumentList class
 class ArgumentList {
 public:
-	ArgumentList(int argc, char * argv[]);
-	~ArgumentList();
+  ArgumentList(int argc, char * argv[]);
+  ~ArgumentList();
 
   std::string getName();
-	template< typename T > T getFirst() throw(EmptyCommandLine);
-	bool getSwitch(const std::string & option) throw(EmptyCommandLine);
-	template< typename T > T getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound);
+  template< typename T > T getFirst() throw(EmptyCommandLine);
+  bool getSwitch(const std::string & option) throw(EmptyCommandLine);
+  template< typename T > T getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound);
 
 private:
   std::list< std::string > args;
@@ -62,42 +61,40 @@ private:
 // Implementations
 
 template< typename T > T ArgumentList::getFirst() throw(EmptyCommandLine) {
-	if ( args.empty() ) {
-		throw EmptyCommandLine();
-	}
+  if ( args.empty() ) {
+    throw EmptyCommandLine();
+  }
 
   std::string temp = args.front();
-	args.pop_front();
-	return castToType< std::string, T >(temp);
+  args.pop_front();
+  return castToType< std::string, T >(temp);
 }
 
 template< class T > T ArgumentList::getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound) {
-	if ( args.empty() ) {
-		throw EmptyCommandLine();
-	}
+  if ( args.empty() ) {
+    throw EmptyCommandLine();
+  }
   T retVal;
 
-	for ( std::list< std::string >::iterator item = args.begin(); item != args.end(); ++item ) {
+  for ( std::list< std::string >::iterator item = args.begin(); item != args.end(); ++item ) {
     std::list< std::string >::iterator next = item;
 
-		if ( option.compare(*item) == 0 ) {
+    if ( option.compare(*item) == 0 ) {
       std::advance(next, 1);
-			retVal = castToType< std::string, T >(*next);
+      retVal = castToType< std::string, T >(*next);
       std::advance(next, 1);
       args.erase(item, next);
-			return retVal;
-		}
-	}
+      return retVal;
+    }
+  }
 
-	throw SwitchNotFound(option);
+  throw SwitchNotFound(option);
 }
 
 inline std::string ArgumentList::getName() {
-	return name;
+  return name;
 }
 
 } // utils
 } // isa
-
-#endif // ARGUMENT_LIST_HPP
 
