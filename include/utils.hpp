@@ -16,7 +16,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <cmath>
-#include <stdint.h>
+#include <cstdint>
 
 
 #pragma once
