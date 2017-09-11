@@ -1,5 +1,5 @@
 
-SOURCE_ROOT ?= $(HOME)
+INSTALL_ROOT ?= $(HOME)
 
 CC := g++
 CFLAGS := -std=c++11 -Wall
@@ -31,5 +31,5 @@ clean:
 	-@rm lib/*
 
 install: all
-	-@cp include/* $(SOURCE_ROOT)/include
-	-@cp lib/* $(SOURCE_ROOT)/lib
+	-@cp include/* $(INSTALL_ROOT)/include
+	-@cp lib/* $(INSTALL_ROOT)/lib
