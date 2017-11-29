@@ -36,7 +36,7 @@ std::string * replace(std::string * src, std::string placeholder, std::string & 
 template< typename N, typename T > T castToType(N value);
 
 // Compare two single precision floats
-bool same(const float result, const float expected);
+bool same(const float result, const float expected, const float tolerance = 1e-6);
 
 // Divide x by 10^9
 double giga(long long unsigned int x);
@@ -80,8 +80,8 @@ template< typename N, typename T > T castToType(N value) {
   return toRet;
 }
 
-inline bool same(const float result, const float expected) {
-  return std::abs(result - expected) < 1e-6;
+inline bool same(const float result, const float expected, const float tolerance) {
+  return std::abs(result - expected) < tolerance;
 }
 
 inline double giga(long long unsigned int x) {
