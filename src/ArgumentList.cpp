@@ -17,7 +17,7 @@
 namespace isa {
 namespace utils {
 
-SwitchNotFound::SwitchNotFound(std::string & option) {
+SwitchNotFound::SwitchNotFound(const std::string & option) {
   this->errorMessage = "Switch \"" + option + "\" not found.";
 }
 
