@@ -34,7 +34,7 @@ public:
   explicit SwitchNotFound(std::string option);
   ~SwitchNotFound() noexcept; 
 
-  const char * what() const ();
+  const char * what() const noexcept;
 
 private:
   std::string option;

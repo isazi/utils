@@ -19,7 +19,7 @@ namespace utils {
 
 SwitchNotFound::SwitchNotFound(std::string option) : option(option) {}
 
-SwitchNotFound::~SwitchNotFound() {}
+SwitchNotFound::~SwitchNotFound() noexcept {}
 
 const char * SwitchNotFound::what() const noexcept {
   return ("Switch \"" + option + "\" not found.").c_str();
