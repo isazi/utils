@@ -31,13 +31,13 @@ class EmptyCommandLine : public std::exception {};
 // Exception: requested switch not present
 class SwitchNotFound : public std::exception {
 public:
-  explicit SwitchNotFound(std::string option);
+  explicit SwitchNotFound(std::string & option);
   ~SwitchNotFound() noexcept; 
 
   const char * what() const noexcept;
 
 private:
-  std::string option;
+  std::string errorMessage;
 };
 
 

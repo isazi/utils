@@ -17,12 +17,14 @@
 namespace isa {
 namespace utils {
 
-SwitchNotFound::SwitchNotFound(std::string option) : option(option) {}
+SwitchNotFound::SwitchNotFound(std::string & option) {
+  this->errorMessage = "Switch \"" + option + "\" not found.";
+}
 
 SwitchNotFound::~SwitchNotFound() noexcept {}
 
 const char * SwitchNotFound::what() const noexcept {
-  return ("Switch \"" + option + "\" not found.").c_str();
+  return this->errorMessage.c_str();
 }
 
 ArgumentList::ArgumentList(int argc, char * argv[]) : name(std::string(argv[0])) {
