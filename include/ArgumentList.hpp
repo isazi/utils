@@ -31,10 +31,10 @@ class EmptyCommandLine : public std::exception {};
 // Exception: requested switch not present
 class SwitchNotFound : public std::exception {
 public:
-  SwitchNotFound(std::string option);
-  ~SwitchNotFound() throw ();
+  explicit SwitchNotFound(std::string option);
+  ~SwitchNotFound(); 
 
-  const char * what() const throw ();
+  const char * what() const noexcept ();
 
 private:
   std::string option;
@@ -48,40 +48,40 @@ public:
   ~ArgumentList();
 
   std::string getName();
-  template< typename T > T getFirst() throw(EmptyCommandLine);
-  bool getSwitch(const std::string & option) throw(EmptyCommandLine);
-  template< typename T > T getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound);
+  template<typename T> T getFirst();
+  bool getSwitch(const std::string & option);
+  template<typename T> T getSwitchArgument(const std::string & option);
 
 private:
-  std::list< std::string > args;
+  std::list<std::string> args;
   std::string name;
 };
 
 
 // Implementations
 
-template< typename T > T ArgumentList::getFirst() throw(EmptyCommandLine) {
+template<typename T> T ArgumentList::getFirst() {
   if ( args.empty() ) {
     throw EmptyCommandLine();
   }
 
   std::string temp = args.front();
   args.pop_front();
-  return castToType< std::string, T >(temp);
+  return isa::utils::castToType<std::string, T>(temp);
 }
 
-template< class T > T ArgumentList::getSwitchArgument(const std::string & option) throw(EmptyCommandLine, SwitchNotFound) {
+template<class T> T ArgumentList::getSwitchArgument(const std::string & option) {
   if ( args.empty() ) {
     throw EmptyCommandLine();
   }
   T retVal;
 
-  for ( std::list< std::string >::iterator item = args.begin(); item != args.end(); ++item ) {
-    std::list< std::string >::iterator next = item;
+  for ( auto item = args.begin(); item != args.end(); ++item ) {
+    auto next = item;
 
     if ( option.compare(*item) == 0 ) {
       std::advance(next, 1);
-      retVal = castToType< std::string, T >(*next);
+      retVal = isa::utils::castToType<std::string, T>(*next);
       std::advance(next, 1);
       args.erase(item, next);
       return retVal;

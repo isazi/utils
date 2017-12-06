@@ -19,9 +19,9 @@ namespace utils {
 
 SwitchNotFound::SwitchNotFound(std::string option) : option(option) {}
 
-SwitchNotFound::~SwitchNotFound() throw () {}
+SwitchNotFound::~SwitchNotFound() {}
 
-const char * SwitchNotFound::what() const throw() {
+const char * SwitchNotFound::what() const noexcept {
   return ("Switch \"" + option + "\" not found.").c_str();
 }
 
@@ -33,12 +33,12 @@ ArgumentList::ArgumentList(int argc, char * argv[]) : name(std::string(argv[0]))
 
 ArgumentList::~ArgumentList() {}
 
-bool ArgumentList::getSwitch(const std::string & option) throw(EmptyCommandLine) {
+bool ArgumentList::getSwitch(const std::string & option) {
   if ( args.empty() ) {
     return false;
   }
 
-  for ( std::list< std::string >::iterator s = args.begin(); s != args.end(); ++s ) {
+  for ( auto s = args.begin(); s != args.end(); ++s ) {
     if ( option.compare(*s) == 0 ) {
       args.erase(s);
       return true;
