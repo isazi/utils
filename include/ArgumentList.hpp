@@ -32,9 +32,9 @@ class EmptyCommandLine : public std::exception {};
 class SwitchNotFound : public std::exception {
 public:
   explicit SwitchNotFound(std::string option);
-  ~SwitchNotFound(); 
+  ~SwitchNotFound() noexcept; 
 
-  const char * what() const noexcept ();
+  const char * what() const ();
 
 private:
   std::string option;
