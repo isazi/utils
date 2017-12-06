@@ -81,6 +81,9 @@ template<class T> T ArgumentList::getSwitchArgument(const std::string & option) 
 
     if ( option.compare(*item) == 0 ) {
       std::advance(next, 1);
+      if ( next == args.end() ) {
+        throw SwitchNotFound(option);
+      }
       retVal = isa::utils::castToType<std::string, T>(*next);
       std::advance(next, 1);
       args.erase(item, next);
