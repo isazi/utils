@@ -1,4 +1,4 @@
-// Copyright 2014 Alessio Sclocco <a.sclocco@vu.nl>
+// Copyright 2014 Alessio Sclocco <alessio@sclocco.eu>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
 #include <cmath>
 #include <limits>
 
-
 #pragma once
 
 namespace isa {
 namespace utils {
 
-template< typename T > class Stats {
+template< typename T > class Statistics {
 public:
-  Stats();
-  ~Stats();
+  Statistics();
+  ~Statistics();
 
   void addElement(T element);
   inline void reset();
@@ -51,11 +50,11 @@ private:
 
 // Implementations
 
-template< typename T > Stats< T >::Stats() : nrElements(0), mean(0.0), harmonicMean(0.0), variance(0.0), rms(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
+template< typename T > Statistics< T >::Statistics() : nrElements(0), mean(0.0), harmonicMean(0.0), variance(0.0), rms(0.0), min(std::numeric_limits< T >::max()), max(std::numeric_limits< T >::min()) {}
 
-template< typename T > Stats< T >::~Stats() {}
+template< typename T > Statistics< T >::~Statistics() {}
 
-template< typename T > void Stats< T >::addElement(T element) {
+template< typename T > void Statistics< T >::addElement(T element) {
     double oldMean = mean;
 
   nrElements++;
@@ -80,7 +79,7 @@ template< typename T > void Stats< T >::addElement(T element) {
   }
 }
 
-template< typename T > inline void Stats< T >::reset() {
+template< typename T > inline void Statistics< T >::reset() {
   nrElements = 0;
   mean = 0.0;
   harmonicMean = 0.0;
@@ -90,15 +89,15 @@ template< typename T > inline void Stats< T >::reset() {
   max = std::numeric_limits< T >::min();
 }
 
-template< typename T > inline long long unsigned int Stats< T >::getNrElements() const {
+template< typename T > inline long long unsigned int Statistics< T >::getNrElements() const {
   return nrElements;
 }
 
-template< typename T > inline double Stats< T >::getMean() const {
+template< typename T > inline double Statistics< T >::getMean() const {
   return mean;
 }
 
-template< typename T > inline double Stats< T >::getHarmonicMean() const {
+template< typename T > inline double Statistics< T >::getHarmonicMean() const {
   if ( nrElements > 0 ) {
     return nrElements / harmonicMean;
   } else {
@@ -106,7 +105,7 @@ template< typename T > inline double Stats< T >::getHarmonicMean() const {
   }
 }
 
-template< typename T > inline double Stats< T >::getVariance() const {
+template< typename T > inline double Statistics< T >::getVariance() const {
   if ( nrElements > 1 ) {
     return variance / (nrElements - 1);
   } else {
@@ -114,23 +113,23 @@ template< typename T > inline double Stats< T >::getVariance() const {
   }
 }
 
-template< typename T > inline double Stats< T >::getStandardDeviation() const {
+template< typename T > inline double Statistics< T >::getStandardDeviation() const {
   return std::sqrt(this->getVariance());
 }
 
-template< typename T > inline double Stats< T >::getCoefficientOfVariation() const {
+template< typename T > inline double Statistics< T >::getCoefficientOfVariation() const {
   return this->getStandardDeviation() / this->getMean();
 }
 
-template< typename T > inline double Stats< T >::getRootMeanSquare() const {
+template< typename T > inline double Statistics< T >::getRootMeanSquare() const {
   return std::sqrt(rms / nrElements);
 }
 
-template< typename T > inline T Stats< T >::getMin() const {
+template< typename T > inline T Statistics< T >::getMin() const {
   return min;
 }
 
-template< typename T > inline T Stats< T >::getMax() const {
+template< typename T > inline T Statistics< T >::getMax() const {
   return max;
 }
 
