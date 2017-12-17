@@ -1,4 +1,4 @@
-// Copyright 2015 Alessio Sclocco <a.sclocco@vu.nl>
+// Copyright 2015 Alessio Sclocco <alessio@sclocco.eu>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,33 +17,24 @@
 namespace isa {
 namespace utils {
 
-std::string * replace(std::string * src, std::string placeholder, std::string & value, bool deleteSrc) {
-	std::string *toRet = new std::string();
-	size_t pos = 0;
-	size_t oldPos = 0;
+std::string * replace(std::string * src, const std::string & placeholder, const std::string & item, bool deleteSrc) {
+	std::string * newString = new std::string();
+	size_t position = 0;
+	size_t oldPosition = 0;
 
-	while ( (pos = src->find(placeholder, pos)) < std::string::npos ) {
-		toRet->append(src->substr(oldPos, pos - oldPos));
-		toRet->append(value);
-		pos += placeholder.length();
-		oldPos = pos;
+	while ( (position = src->find(placeholder, position)) < std::string::npos ) {
+		newString->append(src->substr(oldPosition, position - oldPosition));
+		newString->append(item);
+		position += placeholder.length();
+		oldPosition = position;
 	}
-	toRet->append(src->substr(oldPos));
+	newString->append(src->substr(oldPosition));
 
 	if ( deleteSrc ) {
 		delete src;
 	}
 
-	return toRet;
-}
-
-void bigEndianToLittleEndian(char * value) {
-	unsigned int bitMap = *(reinterpret_cast< unsigned int * >(value));
-
-	bitMap = ((bitMap >> 8) & 0x00ff00ff) | ((bitMap << 8) & 0xff00ff00);
-	bitMap = ((bitMap >> 16) & 0x0000ffff) | ((bitMap << 16) & 0xffff0000);
-
-	*value = bitMap;
+	return newString;
 }
 
 } // utils
