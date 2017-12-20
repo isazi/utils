@@ -1,4 +1,4 @@
-// Copyright 2015 Alessio Sclocco <a.sclocco@vu.nl>
+// Copyright 2015 Alessio Sclocco <alessio@sclocco.eu>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 namespace isa {
 namespace utils {
 
-Timer::Timer() : stats(Stats< double >()), starting(std::chrono::high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
+Timer::Timer() : stats(Statistics< double >()), starting(std::chrono::high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
 
 void Timer::start() {
 	starting = std::chrono::high_resolution_clock::now();

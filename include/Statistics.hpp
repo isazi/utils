@@ -28,7 +28,7 @@ public:
   void addElement(T element);
   inline void reset();
 
-  inline long long unsigned int getNrElements() const;
+  inline std::uint64_t getNrElements() const;
   inline double getMean() const;
   inline double getHarmonicMean() const;
   inline double getVariance() const;
@@ -39,7 +39,7 @@ public:
   inline T getMax() const;
 
 private:
-  long long unsigned int nrElements;
+  std::uint64_t nrElements;
   double mean;
   double harmonicMean;
   double variance;
@@ -89,7 +89,7 @@ template< typename T > inline void Statistics< T >::reset() {
   max = std::numeric_limits< T >::min();
 }
 
-template< typename T > inline long long unsigned int Statistics< T >::getNrElements() const {
+template< typename T > inline std::uint64_t Statistics< T >::getNrElements() const {
   return nrElements;
 }
 

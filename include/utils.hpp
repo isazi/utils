@@ -1,9 +1,9 @@
 ///
 /// \file utils.hpp
-/// \brief Main include file for isa::utils
+/// \brief Collection of simple utilities.
 ///
-/// This include file contains the declaration of all functions that are not included in a separate class.
-/// To use any isa::utils functionality, this is the only file that you need to include.
+/// This include file contains the declaration of all simple utilities
+/// contained in isa::utils.
 ///
 
 // Copyright 2010 Alessio Sclocco <alessio@sclocco.eu>
@@ -25,10 +25,6 @@
 #include <cstdlib>
 #include <cmath>
 #include <cinttypes>
-
-#include "ArgumentList.hpp"
-#include "Statistics.hpp"
-#include "Timer.hpp"
 
 #pragma once
 

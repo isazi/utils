@@ -1,4 +1,4 @@
-// Copyright 2013 Alessio Sclocco <a.sclocco@vu.nl>
+// Copyright 2013 Alessio Sclocco <alessio@sclocco.eu>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,8 +14,7 @@
 
 #include <chrono>
 
-#include "Stats.hpp"
-
+#include "Statistics.hpp"
 
 #pragma once
 
@@ -38,7 +37,7 @@ public:
   double getCoefficientOfVariation() const;
 
 private:
-  Stats< double > stats;
+  Statistics< double > stats;
   std::chrono::high_resolution_clock::time_point starting;
   double totalTime;
   double time;
