@@ -10,7 +10,7 @@ add_library(isa_utils SHARED
 set_target_properties(isa_utils PROPERTIES 
   VERSION ${PROJECT_VERSION}
   SOVERSION 1
-  PUBLIC_HEADER include/ArgumentList.hpp include/Statistics.hpp include/Timer.hpp include/utils.hpp
+  PUBLIC_HEADER "include/ArgumentList.hpp;include/Statistics.hpp;include/Timer.hpp;include/utils.hpp"
 )
 target_include_directories(isa_utils PRIVATE include)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++14")
