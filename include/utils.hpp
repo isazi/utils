@@ -83,11 +83,11 @@ template< typename N, typename T > T castToType(N value) {
 }
 
 inline bool same(const float result, const float expected, const float error) {
-	return abs(result - expected) < error;
+	return std::abs(result - expected) < error;
 }
 
 inline bool same(const double result, const double expected, const double error) {
-	return abs(result - expected) < error;
+	return std::abs(result - expected) < error;
 }
 
 inline double giga(long long unsigned int x) {
