@@ -17,14 +17,14 @@
 namespace isa {
 namespace utils {
 
-Timer::Timer() : stats(Statistics< double >()), starting(std::chrono::high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
+Timer::Timer() : stats(Statistics<double>()), starting(std::chrono::high_resolution_clock::time_point()), totalTime(0.0), time(0.0) {}
 
 void Timer::start() {
 	starting = std::chrono::high_resolution_clock::now();
 }
 
 void Timer::stop() {
-	time = (std::chrono::duration_cast< std::chrono::duration< double > >(std::chrono::high_resolution_clock::now() - starting)).count();
+	time = (std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now() - starting)).count();
 	totalTime += time;
 	stats.addElement(time);
 }
