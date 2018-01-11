@@ -99,7 +99,7 @@ public:
   /// \fn bool getSwitch(const std::string & option)
   /// \brief Checks if an option is still in the command line buffer, and removes it from there if it is.
   ///
-  /// @param A string containing the wanted command line option
+  /// @param option A string containing the wanted command line option
   /// @return True if the option is found, false otherwise
   ///
   bool getSwitch(const std::string & option);
@@ -107,7 +107,7 @@ public:
   /// \fn template<typename T> T getSwitchArgument(const std::string & option)
   /// \brief Retrieve the value passed after a specific command line option.
   ///
-  /// @param A string containing the wanted command line option
+  /// @param option A string containing the wanted command line option
   /// @return The value that follows the specified command line option
   ///
   template<typename T> T getSwitchArgument(const std::string & option);
