@@ -69,6 +69,11 @@ $(function() {
 <div class="title">isa::utils::SwitchNotFound Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Represents the condition when the requested command line argument has not been passed.  
+ <a href="classisa_1_1utils_1_1SwitchNotFound.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ArgumentList_8hpp_source.html">ArgumentList.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for isa::utils::SwitchNotFound:</div>
 <div class="dyncontent">
@@ -80,13 +85,79 @@ Inheritance diagram for isa::utils::SwitchNotFound:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5b9dcd388d6b89ea012a5740bcb8f2c4"><td class="memItemLeft" align="right" valign="top"><a id="a5b9dcd388d6b89ea012a5740bcb8f2c4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SwitchNotFound</b> (const std::string &amp;option)</td></tr>
+<tr class="memitem:a5b9dcd388d6b89ea012a5740bcb8f2c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1SwitchNotFound.html#a5b9dcd388d6b89ea012a5740bcb8f2c4">SwitchNotFound</a> (const std::string &amp;option)</td></tr>
+<tr class="memdesc:a5b9dcd388d6b89ea012a5740bcb8f2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a5b9dcd388d6b89ea012a5740bcb8f2c4">More...</a><br /></td></tr>
 <tr class="separator:a5b9dcd388d6b89ea012a5740bcb8f2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bc81a0c804f70f05ab4072f015484a2"><td class="memItemLeft" align="right" valign="top"><a id="a8bc81a0c804f70f05ab4072f015484a2"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>what</b> () const noexcept</td></tr>
-<tr class="separator:a8bc81a0c804f70f05ab4072f015484a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1400c4ce1202bbeb49fde62592e867a"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1SwitchNotFound.html#aa1400c4ce1202bbeb49fde62592e867a">what</a> () const</td></tr>
+<tr class="memdesc:aa1400c4ce1202bbeb49fde62592e867a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides the error message that explains the exception.  <a href="#aa1400c4ce1202bbeb49fde62592e867a">More...</a><br /></td></tr>
+<tr class="separator:aa1400c4ce1202bbeb49fde62592e867a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents the condition when the requested command line argument has not been passed. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5b9dcd388d6b89ea012a5740bcb8f2c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b9dcd388d6b89ea012a5740bcb8f2c4">&#9670;&nbsp;</a></span>SwitchNotFound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">isa::utils::SwitchNotFound::SwitchNotFound </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>option</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>The command line argument that was not found </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa1400c4ce1202bbeb49fde62592e867a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1400c4ce1202bbeb49fde62592e867a">&#9670;&nbsp;</a></span>what()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * isa::utils::SwitchNotFound::what </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Provides the error message that explains the exception. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the explanation for the raised exception </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="ArgumentList_8hpp_source.html">ArgumentList.hpp</a></li>
 <li>src/ArgumentList.cpp</li>

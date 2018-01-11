@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['replace',['replace',['../utils_8hpp.html#a85244e48731099fbceafa6e332336424',1,'isa::utils']]],
-  ['reset',['reset',['../classisa_1_1utils_1_1Timer.html#ad657dd710482493c960a64f7501c398f',1,'isa::utils::Timer']]]
+  ['pad',['pad',['../utils_8hpp.html#aadd27fd2c54d67cd02e1b5d7a42a5b86',1,'isa::utils']]]
 ];

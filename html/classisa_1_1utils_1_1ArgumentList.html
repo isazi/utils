@@ -69,27 +69,179 @@ $(function() {
 <div class="title">isa::utils::ArgumentList Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Object to process and manipulate command line arguments.  
+ <a href="classisa_1_1utils_1_1ArgumentList.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ArgumentList_8hpp_source.html">ArgumentList.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a31cf55d9f52bde965df0b90ce642c055"><td class="memItemLeft" align="right" valign="top"><a id="a31cf55d9f52bde965df0b90ce642c055"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ArgumentList</b> (int argc, char *argv[])</td></tr>
+<tr class="memitem:a31cf55d9f52bde965df0b90ce642c055"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1ArgumentList.html#a31cf55d9f52bde965df0b90ce642c055">ArgumentList</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a31cf55d9f52bde965df0b90ce642c055"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a31cf55d9f52bde965df0b90ce642c055">More...</a><br /></td></tr>
 <tr class="separator:a31cf55d9f52bde965df0b90ce642c055"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d4ebd056ba6fb2dbefcb9eab80dcabf"><td class="memItemLeft" align="right" valign="top"><a id="a0d4ebd056ba6fb2dbefcb9eab80dcabf"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> ()</td></tr>
-<tr class="separator:a0d4ebd056ba6fb2dbefcb9eab80dcabf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40f7b8fd910ce5e69edd82cf97ef5012"><td class="memTemplParams" colspan="2"><a id="a40f7b8fd910ce5e69edd82cf97ef5012"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a40f7b8fd910ce5e69edd82cf97ef5012"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>getFirst</b> ()</td></tr>
+<tr class="memitem:a834d3f7b0d438fc750d36a85a4bc4d3b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1ArgumentList.html#a834d3f7b0d438fc750d36a85a4bc4d3b">getName</a> () const</td></tr>
+<tr class="memdesc:a834d3f7b0d438fc750d36a85a4bc4d3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the name of the running executable.  <a href="#a834d3f7b0d438fc750d36a85a4bc4d3b">More...</a><br /></td></tr>
+<tr class="separator:a834d3f7b0d438fc750d36a85a4bc4d3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40f7b8fd910ce5e69edd82cf97ef5012"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a40f7b8fd910ce5e69edd82cf97ef5012"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1ArgumentList.html#a40f7b8fd910ce5e69edd82cf97ef5012">getFirst</a> ()</td></tr>
+<tr class="memdesc:a40f7b8fd910ce5e69edd82cf97ef5012"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the first argument still in the command line buffer.  <a href="#a40f7b8fd910ce5e69edd82cf97ef5012">More...</a><br /></td></tr>
 <tr class="separator:a40f7b8fd910ce5e69edd82cf97ef5012"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42a0f8bd82c79a5801782817cad65525"><td class="memItemLeft" align="right" valign="top"><a id="a42a0f8bd82c79a5801782817cad65525"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>getSwitch</b> (const std::string &amp;option)</td></tr>
+<tr class="memitem:a42a0f8bd82c79a5801782817cad65525"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1ArgumentList.html#a42a0f8bd82c79a5801782817cad65525">getSwitch</a> (const std::string &amp;option)</td></tr>
+<tr class="memdesc:a42a0f8bd82c79a5801782817cad65525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an option is still in the command line buffer, and removes it from there if it is.  <a href="#a42a0f8bd82c79a5801782817cad65525">More...</a><br /></td></tr>
 <tr class="separator:a42a0f8bd82c79a5801782817cad65525"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a665c11bd06a82e833c7f604a3ceb0b4f"><td class="memTemplParams" colspan="2"><a id="a665c11bd06a82e833c7f604a3ceb0b4f"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a665c11bd06a82e833c7f604a3ceb0b4f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>getSwitchArgument</b> (const std::string &amp;option)</td></tr>
+<tr class="memitem:a665c11bd06a82e833c7f604a3ceb0b4f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a665c11bd06a82e833c7f604a3ceb0b4f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1ArgumentList.html#a665c11bd06a82e833c7f604a3ceb0b4f">getSwitchArgument</a> (const std::string &amp;option)</td></tr>
+<tr class="memdesc:a665c11bd06a82e833c7f604a3ceb0b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the value passed after a specific command line option.  <a href="#a665c11bd06a82e833c7f604a3ceb0b4f">More...</a><br /></td></tr>
 <tr class="separator:a665c11bd06a82e833c7f604a3ceb0b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Object to process and manipulate command line arguments. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a31cf55d9f52bde965df0b90ce642c055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31cf55d9f52bde965df0b90ce642c055">&#9670;&nbsp;</a></span>ArgumentList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">isa::utils::ArgumentList::ArgumentList </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>The number of items on the command line </td></tr>
+    <tr><td class="paramname">argv</td><td>An array of strings, each of them an item in the command line </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a40f7b8fd910ce5e69edd82cf97ef5012"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40f7b8fd910ce5e69edd82cf97ef5012">&#9670;&nbsp;</a></span>getFirst()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T isa::utils::ArgumentList::getFirst </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the first argument still in the command line buffer. </p>
+<dl class="section return"><dt>Returns</dt><dd>The first item in the command line buffer that has not been yet retrieved </dd></dl>
+
+</div>
+</div>
+<a id="a834d3f7b0d438fc750d36a85a4bc4d3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a834d3f7b0d438fc750d36a85a4bc4d3b">&#9670;&nbsp;</a></span>getName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string isa::utils::ArgumentList::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the name of the running executable. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the name of the running executable </dd></dl>
+
+</div>
+</div>
+<a id="a42a0f8bd82c79a5801782817cad65525"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42a0f8bd82c79a5801782817cad65525">&#9670;&nbsp;</a></span>getSwitch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isa::utils::ArgumentList::getSwitch </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>option</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an option is still in the command line buffer, and removes it from there if it is. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>A string containing the wanted command line option </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the option is found, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a665c11bd06a82e833c7f604a3ceb0b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a665c11bd06a82e833c7f604a3ceb0b4f">&#9670;&nbsp;</a></span>getSwitchArgument()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T isa::utils::ArgumentList::getSwitchArgument </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>option</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the value passed after a specific command line option. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>A string containing the wanted command line option </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value that follows the specified command line option </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="ArgumentList_8hpp_source.html">ArgumentList.hpp</a></li>
 <li>src/ArgumentList.cpp</li>

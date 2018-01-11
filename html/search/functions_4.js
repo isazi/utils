@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mebi',['mebi',['../utils_8hpp.html#ac5a60df6c303b45507d6d9c43f3ca39d',1,'isa::utils']]],
-  ['mega',['mega',['../utils_8hpp.html#ae02818587fe07229738649313b315dfa',1,'isa::utils']]]
+  ['kibi',['kibi',['../utils_8hpp.html#a489f59a129440f8176ceb5473a185927',1,'isa::utils']]],
+  ['kilo',['kilo',['../utils_8hpp.html#aca1308716f38b660ddff12d3461e31de',1,'isa::utils']]]
 ];
