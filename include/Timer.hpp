@@ -2,7 +2,7 @@
 /// \file Timer.hpp
 /// \brief Collection of simple utilities.
 ///
-/// This include file contains the Timer class.
+/// Timer class.
 ///
 
 // Copyright 2013 Alessio Sclocco <alessio@sclocco.eu>
@@ -30,7 +30,7 @@ namespace utils {
 
 ///
 /// \class Timer
-/// \brief Simple timer.
+/// \brief Simple intervals timer.
 ///
 /// This class is used to measure time intervals.
 ///

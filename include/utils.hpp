@@ -2,8 +2,7 @@
 /// \file utils.hpp
 /// \brief Collection of simple utilities.
 ///
-/// This include file contains the declaration of all simple utilities
-/// contained in isa::utils.
+/// All simple utilities contained in isa::utils.
 ///
 
 // Copyright 2010 Alessio Sclocco <alessio@sclocco.eu>
