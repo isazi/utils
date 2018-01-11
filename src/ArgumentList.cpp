@@ -21,8 +21,6 @@ SwitchNotFound::SwitchNotFound(const std::string & option) {
   this->errorMessage = "ERROR: expected switch \"" + option + "\" not found";
 }
 
-SwitchNotFound::~SwitchNotFound() noexcept {}
-
 const char * SwitchNotFound::what() const noexcept {
   return this->errorMessage.c_str();
 }
@@ -32,8 +30,6 @@ ArgumentList::ArgumentList(int argc, char * argv[]) : name(std::string(argv[0]))
     args.push_back(std::string(argv[i]));
   }
 }
-
-ArgumentList::~ArgumentList() {}
 
 bool ArgumentList::getSwitch(const std::string & option) {
   if ( args.empty() ) {

@@ -1,3 +1,10 @@
+///
+/// \file ArgumentList.hpp
+/// \brief 
+///
+/// ArgumentList class and related error types.
+///
+
 // Copyright 2010 Alessio Sclocco <alessio@sclocco.eu>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,30 +32,84 @@
 namespace isa {
 namespace utils {
 
-// Exception: no items in the command line
+///
+/// \class EmptyCommandLine
+/// \extends std::exception
+/// \brief Represents the condition when the command line is empty.
+///
 class EmptyCommandLine : public std::exception {};
-// Exception: requested switch not present
+///
+/// \class SwitchNotFound
+/// \extends std::exception
+/// \brief Represents the condition when the requested command line argument has not been passed.
+///
 class SwitchNotFound : public std::exception {
 public:
+  ///
+  /// \fn explicit SwitchNotFound(const std::string & option)
+  /// \brief Constructor.
+  ///
+  /// @param option The command line argument that was not found
+  ///
   explicit SwitchNotFound(const std::string & option);
-  ~SwitchNotFound() noexcept; 
 
-  const char * what() const noexcept;
+  ///
+  /// \fn const char * what() const
+  /// \brief Provides the error message that explains the exception.
+  ///
+  /// @return A string containing the explanation for the raised exception
+  ///
+  const char * what() const;
 
 private:
   std::string errorMessage;
 };
 
 
-// ArgumentList class
+///
+/// \class ArgumentList
+/// \brief Object to process and manipulate command line arguments.
+///
 class ArgumentList {
 public:
+  ///
+  /// \fn ArgumentList(int argc, char * argv[])
+  /// \brief Constructor.
+  ///
+  /// @param argc The number of items on the command line
+  /// @param argv An array of strings, each of them an item in the command line
+  ///
   ArgumentList(int argc, char * argv[]);
-  ~ArgumentList();
 
-  std::string getName();
+  ///
+  /// \fn std::string getName() const
+  /// \brief Retrieve the name of the running executable.
+  ///
+  /// @return A string containing the name of the running executable
+  ///
+  std::string getName() const;
+  ///
+  /// \fn template<typename T> T getFirst()
+  /// \brief Retrieve the first argument still in the command line buffer.
+  ///
+  /// @return The first item in the command line buffer that has not been yet retrieved
+  ///
   template<typename T> T getFirst();
+  ///
+  /// \fn bool getSwitch(const std::string & option)
+  /// \brief Checks if an option is still in the command line buffer, and removes it from there if it is.
+  ///
+  /// @param A string containing the wanted command line option
+  /// @return True if the option is found, false otherwise
+  ///
   bool getSwitch(const std::string & option);
+  ///
+  /// \fn template<typename T> T getSwitchArgument(const std::string & option)
+  /// \brief Retrieve the value passed after a specific command line option.
+  ///
+  /// @param A string containing the wanted command line option
+  /// @return The value that follows the specified command line option
+  ///
   template<typename T> T getSwitchArgument(const std::string & option);
 
 private:
@@ -57,7 +118,9 @@ private:
 };
 
 
-// Implementations
+inline std::string ArgumentList::getName() const {
+  return name;
+}
 
 template<typename T> T ArgumentList::getFirst() {
   if ( args.empty() ) {
@@ -91,10 +154,6 @@ template<class T> T ArgumentList::getSwitchArgument(const std::string & option) 
   }
 
   throw SwitchNotFound(option);
-}
-
-inline std::string ArgumentList::getName() {
-  return name;
 }
 
 } // utils
