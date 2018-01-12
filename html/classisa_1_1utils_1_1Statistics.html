@@ -69,43 +69,388 @@ $(function() {
 <div class="title">isa::utils::Statistics&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Object to compute statistics of discrete samples.  
+ <a href="classisa_1_1utils_1_1Statistics.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Statistics_8hpp_source.html">Statistics.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa1d3854e735923905ba9dd7a1e34d8a6"><td class="memItemLeft" align="right" valign="top"><a id="aa1d3854e735923905ba9dd7a1e34d8a6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addElement</b> (T element)</td></tr>
+<tr class="memitem:a293766b665791f84142eecd46d42606d"><td class="memItemLeft" align="right" valign="top"><a id="a293766b665791f84142eecd46d42606d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#a293766b665791f84142eecd46d42606d">Statistics</a> ()</td></tr>
+<tr class="memdesc:a293766b665791f84142eecd46d42606d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br /></td></tr>
+<tr class="separator:a293766b665791f84142eecd46d42606d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1d3854e735923905ba9dd7a1e34d8a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#aa1d3854e735923905ba9dd7a1e34d8a6">addElement</a> (T element)</td></tr>
+<tr class="memdesc:aa1d3854e735923905ba9dd7a1e34d8a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new sample to the running statistics.  <a href="#aa1d3854e735923905ba9dd7a1e34d8a6">More...</a><br /></td></tr>
 <tr class="separator:aa1d3854e735923905ba9dd7a1e34d8a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad96188e818ccf08a4111636a365e384"><td class="memItemLeft" align="right" valign="top"><a id="aad96188e818ccf08a4111636a365e384"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
+<tr class="memitem:aad96188e818ccf08a4111636a365e384"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#aad96188e818ccf08a4111636a365e384">reset</a> ()</td></tr>
+<tr class="memdesc:aad96188e818ccf08a4111636a365e384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the internal state of the running statistics.  <a href="#aad96188e818ccf08a4111636a365e384">More...</a><br /></td></tr>
 <tr class="separator:aad96188e818ccf08a4111636a365e384"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f509cbc7b169b1c959e70410d9e7e5"><td class="memItemLeft" align="right" valign="top"><a id="aa2f509cbc7b169b1c959e70410d9e7e5"></a>
-std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>getNrElements</b> () const</td></tr>
+<tr class="memitem:aa2f509cbc7b169b1c959e70410d9e7e5"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#aa2f509cbc7b169b1c959e70410d9e7e5">getNrElements</a> () const</td></tr>
+<tr class="memdesc:aa2f509cbc7b169b1c959e70410d9e7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the number of samples added to the running statistics.  <a href="#aa2f509cbc7b169b1c959e70410d9e7e5">More...</a><br /></td></tr>
 <tr class="separator:aa2f509cbc7b169b1c959e70410d9e7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedd0380e249474e0a435dfdd5cfbd3c5"><td class="memItemLeft" align="right" valign="top"><a id="aedd0380e249474e0a435dfdd5cfbd3c5"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getMean</b> () const</td></tr>
+<tr class="memitem:aedd0380e249474e0a435dfdd5cfbd3c5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#aedd0380e249474e0a435dfdd5cfbd3c5">getMean</a> () const</td></tr>
+<tr class="memdesc:aedd0380e249474e0a435dfdd5cfbd3c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the mean of the added samples.  <a href="#aedd0380e249474e0a435dfdd5cfbd3c5">More...</a><br /></td></tr>
 <tr class="separator:aedd0380e249474e0a435dfdd5cfbd3c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaf5a6c032f56c75fb91e544824de9de"><td class="memItemLeft" align="right" valign="top"><a id="afaf5a6c032f56c75fb91e544824de9de"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getHarmonicMean</b> () const</td></tr>
+<tr class="memitem:afaf5a6c032f56c75fb91e544824de9de"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#afaf5a6c032f56c75fb91e544824de9de">getHarmonicMean</a> () const</td></tr>
+<tr class="memdesc:afaf5a6c032f56c75fb91e544824de9de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the harmonic mean of the added samples.  <a href="#afaf5a6c032f56c75fb91e544824de9de">More...</a><br /></td></tr>
 <tr class="separator:afaf5a6c032f56c75fb91e544824de9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fbfd978e9a6c7140c3988b6494436aa"><td class="memItemLeft" align="right" valign="top"><a id="a9fbfd978e9a6c7140c3988b6494436aa"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getVariance</b> () const</td></tr>
+<tr class="memitem:a9fbfd978e9a6c7140c3988b6494436aa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#a9fbfd978e9a6c7140c3988b6494436aa">getVariance</a> () const</td></tr>
+<tr class="memdesc:a9fbfd978e9a6c7140c3988b6494436aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the variance of the added samples.  <a href="#a9fbfd978e9a6c7140c3988b6494436aa">More...</a><br /></td></tr>
 <tr class="separator:a9fbfd978e9a6c7140c3988b6494436aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa78c6be45c4eb0587f5bdcc778295868"><td class="memItemLeft" align="right" valign="top"><a id="aa78c6be45c4eb0587f5bdcc778295868"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getStandardDeviation</b> () const</td></tr>
+<tr class="memitem:aa78c6be45c4eb0587f5bdcc778295868"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#aa78c6be45c4eb0587f5bdcc778295868">getStandardDeviation</a> () const</td></tr>
+<tr class="memdesc:aa78c6be45c4eb0587f5bdcc778295868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the standard deviation of the added samples.  <a href="#aa78c6be45c4eb0587f5bdcc778295868">More...</a><br /></td></tr>
 <tr class="separator:aa78c6be45c4eb0587f5bdcc778295868"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bca1e0e0445543f5f1003c1bf172a88"><td class="memItemLeft" align="right" valign="top"><a id="a8bca1e0e0445543f5f1003c1bf172a88"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getCoefficientOfVariation</b> () const</td></tr>
+<tr class="memitem:a8bca1e0e0445543f5f1003c1bf172a88"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#a8bca1e0e0445543f5f1003c1bf172a88">getCoefficientOfVariation</a> () const</td></tr>
+<tr class="memdesc:a8bca1e0e0445543f5f1003c1bf172a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the coefficient of variation of the added samples.  <a href="#a8bca1e0e0445543f5f1003c1bf172a88">More...</a><br /></td></tr>
 <tr class="separator:a8bca1e0e0445543f5f1003c1bf172a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b57b8b0301f7a684321382e7ff44194"><td class="memItemLeft" align="right" valign="top"><a id="a6b57b8b0301f7a684321382e7ff44194"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getRootMeanSquare</b> () const</td></tr>
+<tr class="memitem:a6b57b8b0301f7a684321382e7ff44194"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#a6b57b8b0301f7a684321382e7ff44194">getRootMeanSquare</a> () const</td></tr>
+<tr class="memdesc:a6b57b8b0301f7a684321382e7ff44194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the root mean square of the added samples.  <a href="#a6b57b8b0301f7a684321382e7ff44194">More...</a><br /></td></tr>
 <tr class="separator:a6b57b8b0301f7a684321382e7ff44194"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac674e6cd582d9027873f3abd751314b0"><td class="memItemLeft" align="right" valign="top"><a id="ac674e6cd582d9027873f3abd751314b0"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>getMin</b> () const</td></tr>
+<tr class="memitem:ac674e6cd582d9027873f3abd751314b0"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#ac674e6cd582d9027873f3abd751314b0">getMin</a> () const</td></tr>
+<tr class="memdesc:ac674e6cd582d9027873f3abd751314b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the minimum of the added samples.  <a href="#ac674e6cd582d9027873f3abd751314b0">More...</a><br /></td></tr>
 <tr class="separator:ac674e6cd582d9027873f3abd751314b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3547d99b8b550a8a981f77d55de59df6"><td class="memItemLeft" align="right" valign="top"><a id="a3547d99b8b550a8a981f77d55de59df6"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>getMax</b> () const</td></tr>
+<tr class="memitem:a3547d99b8b550a8a981f77d55de59df6"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classisa_1_1utils_1_1Statistics.html#a3547d99b8b550a8a981f77d55de59df6">getMax</a> () const</td></tr>
+<tr class="memdesc:a3547d99b8b550a8a981f77d55de59df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the maximum of the added samples.  <a href="#a3547d99b8b550a8a981f77d55de59df6">More...</a><br /></td></tr>
 <tr class="separator:a3547d99b8b550a8a981f77d55de59df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+class isa::utils::Statistics&lt; T &gt;</h3>
+
+<p>Object to compute statistics of discrete samples. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa1d3854e735923905ba9dd7a1e34d8a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1d3854e735923905ba9dd7a1e34d8a6">&#9670;&nbsp;</a></span>addElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::addElement </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a new sample to the running statistics. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>The new sample to add to the running statistics </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8bca1e0e0445543f5f1003c1bf172a88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bca1e0e0445543f5f1003c1bf172a88">&#9670;&nbsp;</a></span>getCoefficientOfVariation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getCoefficientOfVariation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the coefficient of variation of the added samples. </p>
+<p>The coefficient of variation is defined as the standard deviation divided by the mean.</p>
+<dl class="section return"><dt>Returns</dt><dd>The coefficient of variation of the previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="afaf5a6c032f56c75fb91e544824de9de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaf5a6c032f56c75fb91e544824de9de">&#9670;&nbsp;</a></span>getHarmonicMean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getHarmonicMean </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the harmonic mean of the added samples. </p>
+<dl class="section return"><dt>Returns</dt><dd>The harmonic mean of the previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="a3547d99b8b550a8a981f77d55de59df6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3547d99b8b550a8a981f77d55de59df6">&#9670;&nbsp;</a></span>getMax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getMax </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the maximum of the added samples. </p>
+<dl class="section return"><dt>Returns</dt><dd>The maximum of the previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="aedd0380e249474e0a435dfdd5cfbd3c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedd0380e249474e0a435dfdd5cfbd3c5">&#9670;&nbsp;</a></span>getMean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getMean </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the mean of the added samples. </p>
+<dl class="section return"><dt>Returns</dt><dd>The mean of the previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="ac674e6cd582d9027873f3abd751314b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac674e6cd582d9027873f3abd751314b0">&#9670;&nbsp;</a></span>getMin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getMin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the minimum of the added samples. </p>
+<dl class="section return"><dt>Returns</dt><dd>The minimum of the previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="aa2f509cbc7b169b1c959e70410d9e7e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2f509cbc7b169b1c959e70410d9e7e5">&#9670;&nbsp;</a></span>getNrElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint64_t <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getNrElements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the number of samples added to the running statistics. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="a6b57b8b0301f7a684321382e7ff44194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b57b8b0301f7a684321382e7ff44194">&#9670;&nbsp;</a></span>getRootMeanSquare()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getRootMeanSquare </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the root mean square of the added samples. </p>
+<p>The root mean square is defined as the square root of the mean of the squares.</p>
+<dl class="section return"><dt>Returns</dt><dd>The root mean square of the previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="aa78c6be45c4eb0587f5bdcc778295868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa78c6be45c4eb0587f5bdcc778295868">&#9670;&nbsp;</a></span>getStandardDeviation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getStandardDeviation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the standard deviation of the added samples. </p>
+<dl class="section return"><dt>Returns</dt><dd>The standard deviation of the previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="a9fbfd978e9a6c7140c3988b6494436aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fbfd978e9a6c7140c3988b6494436aa">&#9670;&nbsp;</a></span>getVariance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::getVariance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the variance of the added samples. </p>
+<dl class="section return"><dt>Returns</dt><dd>The variance of the previously added samples </dd></dl>
+
+</div>
+</div>
+<a id="aad96188e818ccf08a4111636a365e384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad96188e818ccf08a4111636a365e384">&#9670;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classisa_1_1utils_1_1Statistics.html">isa::utils::Statistics</a>&lt; T &gt;::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reset the internal state of the running statistics. </p>
+<p>This method completely resets the internal state of the running statistics. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="Statistics_8hpp_source.html">Statistics.hpp</a></li>
 </ul>

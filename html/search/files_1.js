@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timer_2ehpp',['Timer.hpp',['../Timer_8hpp.html',1,'']]]
+  ['statistics_2ehpp',['Statistics.hpp',['../Statistics_8hpp.html',1,'']]]
 ];
