@@ -59,7 +59,7 @@ public:
   ///
   /// @return A string containing the explanation for the raised exception
   ///
-  const char * what() const;
+  const char * what() const noexcept;
 
 private:
   std::string errorMessage;
