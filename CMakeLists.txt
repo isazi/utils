@@ -11,7 +11,7 @@ add_library(isa_utils SHARED
   src/Timer.cpp
   src/utils.cpp
 )
-set_target_properties(isa_utils PROPERTIES 
+set_target_properties(isa_utils PROPERTIES
   VERSION ${PROJECT_VERSION}
   SOVERSION 1
   PUBLIC_HEADER "include/ArgumentList.hpp;include/Statistics.hpp;include/Timer.hpp;include/utils.hpp"
