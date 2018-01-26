@@ -22,3 +22,14 @@ install(TARGETS isa_utils
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
+
+# Unit testing
+enable_testing()
+set(TEST_LINK_LIBRARIES gtest gtest_main)
+## utilsTest
+add_executable(utilsTest
+  test/utilsTest.cpp
+)
+target_include_directories(utilsTest PRIVATE include)
+target_link_libraries(utilsTest PRIVATE isa_utils ${TEST_LINK_LIBRARIES})
+add_test(NAME utilsTest COMMAND utilsTest)
