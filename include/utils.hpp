@@ -44,6 +44,8 @@ std::string * replace(std::string * src, const std::string & placeholder, const 
 ///
 /// \fn template<typename OldType, typename NewType> NewType castToType(const OldType item)
 /// \brief Casts the value of a variable from OldType to NewType.
+/// This function is intended mainly to convert the value of a string to a numeric type, and it should not be used if more precise casting is possible,
+/// such as between numeric types, because precision is not preserved.
 ///
 /// @param item The variable to cast
 /// @return The casted value
