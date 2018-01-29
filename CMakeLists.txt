@@ -25,7 +25,7 @@ install(TARGETS isa_utils
 
 # Unit testing
 enable_testing()
-set(TEST_LINK_LIBRARIES gtest gtest_main)
+set(TEST_LINK_LIBRARIES gtest gtest_main pthread)
 ## utilsTest
 add_executable(utilsTest
   test/utilsTest.cpp
