@@ -42,7 +42,7 @@ namespace utils {
 ///
 std::string * replace(std::string * src, const std::string & placeholder, const std::string & item, bool deleteSrc = false);
 ///
-/// \fn template<typename OldType, typename NewType> NewType castToType(const OldType item)
+/// \fn template<typename OldType, typename NewType> NewType castToType(OldType item)
 /// \brief Casts the value of a variable from OldType to NewType.
 /// This function is intended mainly to convert the value of a string to a numeric type, and it should not be used if more precise casting is possible,
 /// such as between numeric types, because precision is not preserved.
@@ -50,9 +50,9 @@ std::string * replace(std::string * src, const std::string & placeholder, const 
 /// @param item The variable to cast
 /// @return The casted value
 ///
-template<typename OldType, typename NewType> NewType castToType(const OldType item);
+template<typename OldType, typename NewType> NewType castToType(OldType item);
 ///
-/// \fn template<typename FloatingPointType> bool same(const FloatingPointType result, const FloatingPointType expected, const double error = 1.0e-06)
+/// \fn template<typename FloatingPointType> bool same(FloatingPointType result, FloatingPointType expected, double error = 1.0e-06)
 /// \brief Compare two floating point numbers.
 ///
 /// @param result The number to compare
@@ -60,14 +60,14 @@ template<typename OldType, typename NewType> NewType castToType(const OldType it
 /// @param error The maximum absolute error between the two numbers
 /// @return The value true if the two numbers are the same, false otherwise
 ///
-template<typename FloatingPointType> bool same(const FloatingPointType result, const FloatingPointType expected, const double error = 1.0e-06);
+template<typename FloatingPointType> bool same(FloatingPointType result, FloatingPointType expected, double error = 1.0e-06);
 ///
 /// \fn void bigEndianToLittleEndian(char * value)
 /// \brief Change the endianness of a 32 bits variable from big to little, in place.
 ///
 /// @param value A pointer to the variable to modify
 ///
-void bigEndianToLittleEndian(char * value);
+void bigEndianToLittleEndian(std::uint32_t * value);
 ///
 /// \fn std::uint64_t pad(const std::uint64_t x, const unsigned int padding)
 /// \brief Pad the value of a variable to the closest, larger or equal, multiple of a provided padding factor.
@@ -76,7 +76,7 @@ void bigEndianToLittleEndian(char * value);
 /// @param padding Padding factor
 /// @return Padded value
 ///
-std::uint64_t pad(const std::uint64_t x, const unsigned int padding);
+std::uint64_t pad(std::uint64_t x, unsigned int padding);
 ///
 /// \fn template<typename Type> std::uint8_t getBit(const Type bitmap, const std::uint8_t bit)
 /// \brief Read a specific bit in a variable.
@@ -85,7 +85,7 @@ std::uint64_t pad(const std::uint64_t x, const unsigned int padding);
 /// @param bit The position of the bit to access
 /// @return The value of the requested bit in the input
 ///
-template<typename Type> std::uint8_t getBit(const Type bitmap, const std::uint8_t bit);
+template<typename Type> std::uint8_t getBit(Type bitmap, std::uint8_t bit);
 ///
 /// \fn template<typename Type> void setBit(Type & bitmap, const std::uint8_t newBit, const std::uint8_t bit)
 /// \brief Write a specific bit in a variable.
@@ -94,7 +94,7 @@ template<typename Type> std::uint8_t getBit(const Type bitmap, const std::uint8_
 /// @param newBit The value to write
 /// @param bit The position of the bit to set
 ///
-template<typename Type> void setBit(Type & bitmap, const std::uint8_t newBit, const std::uint8_t bit);
+template<typename Type> void setBit(Type & bitmap, std::uint8_t newBit, std::uint8_t bit);
 ///
 /// \fn template<typename NumericType> double tera(const NumericType x)
 /// \brief Divide the value of the input by 10^12.
@@ -102,7 +102,7 @@ template<typename Type> void setBit(Type & bitmap, const std::uint8_t newBit, co
 /// @param x The input value
 /// @return The value of the input divided by 10^12
 ///
-template<typename NumericType> double tera(const NumericType x);
+template<typename NumericType> double tera(NumericType x);
 ///
 /// \fn template<typename NumericType> double giga(const NumericType x)
 /// \brief Divide the value of the input by 10^9.
@@ -110,7 +110,7 @@ template<typename NumericType> double tera(const NumericType x);
 /// @param x The input value
 /// @return The value of the input divided by 10^9
 ///
-template<typename NumericType> double giga(const NumericType x);
+template<typename NumericType> double giga(NumericType x);
 ///
 /// \fn template<typename NumericType> double mega(const NumericType x)
 /// \brief Divide the value of the input by 10^6.
@@ -118,7 +118,7 @@ template<typename NumericType> double giga(const NumericType x);
 /// @param x The input value
 /// @return The value of the input divided by 10^6
 ///
-template<typename NumericType> double mega(const NumericType x);
+template<typename NumericType> double mega(NumericType x);
 ///
 /// \fn template<typename NumericType> double kilo(const NumericType x)
 /// \brief Divide the value of the input by 10^3.
@@ -126,7 +126,7 @@ template<typename NumericType> double mega(const NumericType x);
 /// @param x The input value
 /// @return The value of the input divided by 10^3
 ///
-template<typename NumericType> double kilo(const NumericType x);
+template<typename NumericType> double kilo(NumericType x);
 ///
 /// \fn template<typename NumericType> double tebi(const NumericType x)
 /// \brief Divide the value of the input by 2^40.
@@ -134,7 +134,7 @@ template<typename NumericType> double kilo(const NumericType x);
 /// @param x The input value
 /// @return The value of the input divided by 2^40
 ///
-template<typename NumericType> double tebi(const NumericType x);
+template<typename NumericType> double tebi(NumericType x);
 ///
 /// \fn template<typename NumericType> double gibi(const NumericType x)
 /// \brief Divide the value of the input by 2^30.
@@ -142,7 +142,7 @@ template<typename NumericType> double tebi(const NumericType x);
 /// @param x The input value
 /// @return The value of the input divided by 2^30
 ///
-template<typename NumericType> double gibi(const NumericType x);
+template<typename NumericType> double gibi(NumericType x);
 ///
 /// \fn template<typename NumericType> double mebi(const NumericType x)
 /// \brief Divide the value of the input by 2^20.
@@ -150,7 +150,7 @@ template<typename NumericType> double gibi(const NumericType x);
 /// @param x The input value
 /// @return The value of the input divided by 2^20
 ///
-template<typename NumericType> double mebi(const NumericType x);
+template<typename NumericType> double mebi(NumericType x);
 ///
 /// \fn template<typename NumericType> double kibi(const NumericType x)
 /// \brief Divide the value of the input by 2^10.
@@ -158,7 +158,7 @@ template<typename NumericType> double mebi(const NumericType x);
 /// @param x The input value
 /// @return The value of the input divided by 2^10
 ///
-template<typename NumericType> double kibi(const NumericType x);
+template<typename NumericType> double kibi(NumericType x);
 
 
 template<typename OldType, typename NewType> NewType castToType(const OldType item) {
@@ -176,8 +176,8 @@ template<typename FloatingPointType> inline bool same(const FloatingPointType re
 }
 
 // Implementation from http://stackoverflow.com/questions/2782725/converting-float-values-from-big-endian-to-little-endian
-inline void bigEndianToLittleEndian(char * value) {
-  unsigned int bitmap = *(reinterpret_cast<unsigned int *>(value));
+inline void bigEndianToLittleEndian(std::uint32_t * value) {
+  std::uint32_t bitmap = *value;
 
   bitmap = ((bitmap >> 8) & 0x00ff00ff) | ((bitmap << 8) & 0xff00ff00);
   bitmap = ((bitmap >> 16) & 0x0000ffff) | ((bitmap << 16) & 0xffff0000);
