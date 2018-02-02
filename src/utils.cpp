@@ -18,7 +18,7 @@ namespace isa {
 namespace utils {
 
 std::string * replace(std::string * src, const std::string & placeholder, const std::string & item, bool deleteSrc) {
-	std::string * newString = new std::string();
+	auto * newString = new std::string();
 	size_t position = 0;
 	size_t oldPosition = 0;
 
