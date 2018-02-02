@@ -47,10 +47,10 @@ TEST(SameTest, DifferentValue) {
 
   EXPECT_FALSE(isa::utils::same(static_cast<double>(singlePrecision), doublePrecision)) << "Values: " << static_cast<double>(singlePrecision) << " " << doublePrecision;
   EXPECT_FALSE(isa::utils::same(static_cast<float>(doublePrecision), singlePrecision)) << "Values: " << static_cast<float>(doublePrecision) << " " << singlePrecision;
-  EXPECT_TRUE(isa::utils::same(singlePrecision, doublePrecision, 1.0e-03)) << "Values: " << singlePrecision << " " << doublePrecision;
-  EXPECT_TRUE(isa::utils::same(doublePrecision, singlePrecision, 1.0e-03)) << "Values: " << doublePrecision << " " << singlePrecision;
-  EXPECT_FALSE(isa::utils::same(singlePrecision, doublePrecision, 1.0e-04)) << "Values: " << singlePrecision << " " << doublePrecision;
-  EXPECT_FALSE(isa::utils::same(doublePrecision, singlePrecision, 1.0e-04)) << "Values: " << doublePrecision << " " << singlePrecision;
+  EXPECT_TRUE(isa::utils::same(static_cast<double>(singlePrecision), doublePrecision, 1.0e-03)) << "Values: " << static_cast<double>(singlePrecision) << " " << doublePrecision;
+  EXPECT_TRUE(isa::utils::same(static_cast<float>(doublePrecision), singlePrecision, 1.0e-03)) << "Values: " << static_cast<float>(doublePrecision) << " " << singlePrecision;
+  EXPECT_FALSE(isa::utils::same(static_cast<double>(singlePrecision), doublePrecision, 1.0e-04)) << "Values: " << static_cast<double>(singlePrecision) << " " << doublePrecision;
+  EXPECT_FALSE(isa::utils::same(static_cast<float>(doublePrecision), singlePrecision, 1.0e-04)) << "Values: " << static_cast<float>(doublePrecision) << " " << singlePrecision;
 }
 
 TEST(CastToTypeTest, TypeDifferent) {
