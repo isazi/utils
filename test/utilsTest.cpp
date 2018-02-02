@@ -33,7 +33,7 @@ TEST(ReplaceTest, EraseString) {
 
 TEST(SameTest, SameValue) {
   float singlePrecision = 932.728292f;
-  float doublePrecision = 932.728636126;
+  double doublePrecision = 932.728636126;
 
   EXPECT_TRUE(isa::utils::same(singlePrecision, singlePrecision)) << "Values: " << singlePrecision << " " << singlePrecision;
   EXPECT_TRUE(isa::utils::same(doublePrecision, doublePrecision, 1.0e-03)) << "Values: " << doublePrecision << " " << singlePrecision;
@@ -43,10 +43,10 @@ TEST(SameTest, SameValue) {
 
 TEST(SameTest, DifferentValue) {
   float singlePrecision = 932.728292f;
-  float doublePrecision = 932.728636126;
+  double doublePrecision = 932.728636126;
 
-  EXPECT_FALSE(isa::utils::same(singlePrecision, doublePrecision)) << "Values: " << singlePrecision << " " << doublePrecision;
-  EXPECT_FALSE(isa::utils::same(doublePrecision, singlePrecision)) << "Values: " << doublePrecision << " " << singlePrecision;
+  EXPECT_FALSE(isa::utils::same(static_cast<double>(singlePrecision), doublePrecision)) << "Values: " << static_cast<double>(singlePrecision) << " " << doublePrecision;
+  EXPECT_FALSE(isa::utils::same(static_cast<float>(doublePrecision), singlePrecision)) << "Values: " << static_cast<float>(doublePrecision) << " " << singlePrecision;
   EXPECT_TRUE(isa::utils::same(singlePrecision, doublePrecision, 1.0e-03)) << "Values: " << singlePrecision << " " << doublePrecision;
   EXPECT_TRUE(isa::utils::same(doublePrecision, singlePrecision, 1.0e-03)) << "Values: " << doublePrecision << " " << singlePrecision;
   EXPECT_FALSE(isa::utils::same(singlePrecision, doublePrecision, 1.0e-04)) << "Values: " << singlePrecision << " " << doublePrecision;
