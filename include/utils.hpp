@@ -62,14 +62,14 @@ template<typename OldType, typename NewType> NewType castToType(OldType item);
 ///
 template<typename FloatingPointType> bool same(FloatingPointType result, FloatingPointType expected, double error = 1.0e-06);
 ///
-/// \fn void bigEndianToLittleEndian(char * value)
+/// \fn void bigEndianToLittleEndian(std::uint32_t * value)
 /// \brief Change the endianness of a 32 bits variable from big to little, in place.
 ///
 /// @param value A pointer to the variable to modify
 ///
 void bigEndianToLittleEndian(std::uint32_t * value);
 ///
-/// \fn std::uint64_t pad(const std::uint64_t x, const unsigned int padding)
+/// \fn std::uint64_t pad(std::uint64_t x, unsigned int padding)
 /// \brief Pad the value of a variable to the closest, larger or equal, multiple of a provided padding factor.
 ///
 /// @param x Variable to pad
@@ -78,7 +78,7 @@ void bigEndianToLittleEndian(std::uint32_t * value);
 ///
 std::uint64_t pad(std::uint64_t x, unsigned int padding);
 ///
-/// \fn template<typename Type> std::uint8_t getBit(const Type bitmap, const std::uint8_t bit)
+/// \fn template<typename Type> std::uint8_t getBit(Type bitmap, std::uint8_t bit)
 /// \brief Read a specific bit in a variable.
 ///
 /// @param bitmap The input bit field
@@ -87,7 +87,7 @@ std::uint64_t pad(std::uint64_t x, unsigned int padding);
 ///
 template<typename Type> std::uint8_t getBit(Type bitmap, std::uint8_t bit);
 ///
-/// \fn template<typename Type> void setBit(Type & bitmap, const std::uint8_t newBit, const std::uint8_t bit)
+/// \fn template<typename Type> void setBit(Type & bitmap, std::uint8_t newBit, std::uint8_t bit)
 /// \brief Write a specific bit in a variable.
 ///
 /// @param bitmap The input bit field
@@ -96,7 +96,7 @@ template<typename Type> std::uint8_t getBit(Type bitmap, std::uint8_t bit);
 ///
 template<typename Type> void setBit(Type & bitmap, std::uint8_t newBit, std::uint8_t bit);
 ///
-/// \fn template<typename NumericType> double tera(const NumericType x)
+/// \fn template<typename NumericType> double tera(NumericType x)
 /// \brief Divide the value of the input by 10^12.
 ///
 /// @param x The input value
@@ -104,7 +104,7 @@ template<typename Type> void setBit(Type & bitmap, std::uint8_t newBit, std::uin
 ///
 template<typename NumericType> double tera(NumericType x);
 ///
-/// \fn template<typename NumericType> double giga(const NumericType x)
+/// \fn template<typename NumericType> double giga(NumericType x)
 /// \brief Divide the value of the input by 10^9.
 ///
 /// @param x The input value
@@ -112,7 +112,7 @@ template<typename NumericType> double tera(NumericType x);
 ///
 template<typename NumericType> double giga(NumericType x);
 ///
-/// \fn template<typename NumericType> double mega(const NumericType x)
+/// \fn template<typename NumericType> double mega(NumericType x)
 /// \brief Divide the value of the input by 10^6.
 ///
 /// @param x The input value
@@ -120,7 +120,7 @@ template<typename NumericType> double giga(NumericType x);
 ///
 template<typename NumericType> double mega(NumericType x);
 ///
-/// \fn template<typename NumericType> double kilo(const NumericType x)
+/// \fn template<typename NumericType> double kilo(NumericType x)
 /// \brief Divide the value of the input by 10^3.
 ///
 /// @param x The input value
@@ -128,7 +128,7 @@ template<typename NumericType> double mega(NumericType x);
 ///
 template<typename NumericType> double kilo(NumericType x);
 ///
-/// \fn template<typename NumericType> double tebi(const NumericType x)
+/// \fn template<typename NumericType> double tebi(NumericType x)
 /// \brief Divide the value of the input by 2^40.
 ///
 /// @param x The input value
@@ -136,7 +136,7 @@ template<typename NumericType> double kilo(NumericType x);
 ///
 template<typename NumericType> double tebi(NumericType x);
 ///
-/// \fn template<typename NumericType> double gibi(const NumericType x)
+/// \fn template<typename NumericType> double gibi(NumericType x)
 /// \brief Divide the value of the input by 2^30.
 ///
 /// @param x The input value
@@ -144,7 +144,7 @@ template<typename NumericType> double tebi(NumericType x);
 ///
 template<typename NumericType> double gibi(NumericType x);
 ///
-/// \fn template<typename NumericType> double mebi(const NumericType x)
+/// \fn template<typename NumericType> double mebi(NumericType x)
 /// \brief Divide the value of the input by 2^20.
 ///
 /// @param x The input value
@@ -152,7 +152,7 @@ template<typename NumericType> double gibi(NumericType x);
 ///
 template<typename NumericType> double mebi(NumericType x);
 ///
-/// \fn template<typename NumericType> double kibi(const NumericType x)
+/// \fn template<typename NumericType> double kibi(NumericType x)
 /// \brief Divide the value of the input by 2^10.
 ///
 /// @param x The input value
