@@ -59,7 +59,7 @@ public:
   ///
   /// @return A string containing the explanation for the raised exception
   ///
-  const char * what() const noexcept;
+  const char * what() const noexcept override;
 
 private:
   std::string errorMessage;
@@ -141,7 +141,7 @@ template<class T> T ArgumentList::getSwitchArgument(const std::string & option) 
   for ( auto item = args.begin(); item != args.end(); ++item ) {
     auto next = item;
 
-    if ( option.compare(*item) == 0 ) {
+    if (option == *item) {
       std::advance(next, 1);
       if ( next == args.end() ) {
         throw SwitchNotFound(option);
