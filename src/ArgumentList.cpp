@@ -27,7 +27,7 @@ const char * SwitchNotFound::what() const noexcept {
 
 ArgumentList::ArgumentList(int argc, char * argv[]) : name(std::string(argv[0])) {
   for ( int i = 1; i < argc; i++ ) {
-    args.push_back(std::string(argv[i]));
+    args.emplace_back(argv[i]);
   }
 }
 
@@ -37,7 +37,7 @@ bool ArgumentList::getSwitch(const std::string & option) {
   }
 
   for ( auto s = args.begin(); s != args.end(); ++s ) {
-    if ( option.compare(*s) == 0 ) {
+    if (option == *s) {
       args.erase(s);
       return true;
     }
