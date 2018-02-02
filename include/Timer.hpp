@@ -61,12 +61,12 @@ public:
   void reset();
 
   ///
-  /// \fn unsigned int getNrRuns() const
+  /// \fn std::uint64_t getNrRuns() const
   /// \brief Retrieve the number of timed intervals.
   ///
   /// @return The number of timed intervals
   ///
-  unsigned int getNrRuns() const;
+  std::uint64_t getNrRuns() const;
   ///
   /// \fn double getTotalTime() const
   /// \brief Retrieve the total measured time, in seconds.
@@ -112,7 +112,7 @@ private:
   double time;
 };
 
-inline unsigned int Timer::getNrRuns() const {
+inline std::uint64_t Timer::getNrRuns() const {
   return stats.getNrElements();
 }
 
