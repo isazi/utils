@@ -33,6 +33,7 @@ void Timer::reset() {
 	starting = std::chrono::high_resolution_clock::time_point();
 	totalTime = 0.0;
 	time = 0.0;
+	stats.reset();
 }
 
 } // utils
