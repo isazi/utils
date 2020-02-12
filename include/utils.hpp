@@ -201,6 +201,14 @@ template<typename Type> inline void setBit(Type & bitmap, const std::uint8_t new
   bitmap ^= (-newBit ^ bitmap) & (1 << bit);
 }
 
+inline bool same(const float result, const float expected, const float error) {
+	return std::abs(result - expected) < error;
+}
+
+inline bool same(const double result, const double expected, const double error) {
+	return std::abs(result - expected) < error;
+}
+
 template<typename NumericType> inline double tera(const NumericType x) {
   return x / 1000000000000.0;
 }
